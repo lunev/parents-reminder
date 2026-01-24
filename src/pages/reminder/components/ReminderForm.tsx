@@ -41,7 +41,7 @@ export const ReminderForm = () => {
 
   return (
     <form className="flex flex-col gap-7" onSubmit={handleSubmit}>
-      <div className="flex flex-col gap-7 max-h-120 overflow-auto scrollbar-hide">
+      <div className="p-5 flex flex-col gap-7 max-h-120 overflow-auto scrollbar-hide">
         {/* Photo */}
         <div className="pt-2 flex justify-center">
           <PhotoFied

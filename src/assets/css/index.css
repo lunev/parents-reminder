@@ -165,7 +165,7 @@
     }
 
     body {
-      @apply min-w-100 bg-background text-foreground bg-gradient-soft;
+      @apply min-w-100 bg-background text-foreground;
       font-family: 'Nunito', system-ui, sans-serif;
     }
   }
