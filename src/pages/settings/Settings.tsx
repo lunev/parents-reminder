@@ -37,7 +37,7 @@ export const Settings = () => {
         </Button>
         <h1 className="text-base font-bold text-foreground capitalize">Settings</h1>
       </header>
-      <div className="p-5 bg-background flex flex-col gap-5">
+      <div className="p-5 bg-background flex flex-col gap-5 max-h-100 overflow-auto scrollbar-hide">
         <div className="flex flex-col gap-3">
           <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
             Notifications
