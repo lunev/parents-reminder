@@ -1,12 +1,14 @@
-import type { WeekDay } from "./enum";
+import type { ChildStatus, WeekDay } from "./enum";
 
-export interface Reminder {
+export interface Child {
   id: string;
-  title: string;
+  name: string;
   photo: string;
   enabled: boolean;
   earlyReminder: EarlyReminder;
   schedule: Schedule[];
+  createdAt?: number;
+  updatedAt?: number;
 }
 
 export interface Schedule {
@@ -14,6 +16,7 @@ export interface Schedule {
   time: string;
   notes: string;
   enabled: boolean;
+  status: ChildStatus;
 }
 
 export interface EarlyReminder {

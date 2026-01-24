@@ -1,7 +1,7 @@
 import { useState, type FormEventHandler } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { v4 as uuidv4 } from "uuid";
-import { type Reminder } from "@/types";
+import { type Child } from "@/types";
 import { WEEK_DAYS } from "@/constants";
 import { ROUTES } from "@/config";
 import { PhotoFied } from "./PhotoField";
@@ -10,30 +10,48 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { storage } from "@/lib/storage";
+import { STORAGE_KEYS } from "@/constants/storage_keys";
 
-const initialFormData: Reminder = {
-  id: uuidv4(),
-  title: "",
-  photo: "",
-  enabled: true,
-  earlyReminder: {
-    enabled: false,
-    minutes: "0",
-  },
-  schedule: WEEK_DAYS.map((day) => ({
-    day: day,
-    time: "08:00",
-    notes: "",
-    enabled: true,
-  })),
-};
+interface ChildFormProps {
+  child?: Child;
+}
 
-export const ReminderForm = () => {
-  const [formData, setFormData] = useState<Reminder>(initialFormData);
+export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
+  const [formData, setFormData] = useState<Child>(
+    child ?? {
+      id: uuidv4(),
+      name: "",
+      photo: "",
+      enabled: true,
+      earlyReminder: {
+        enabled: false,
+        minutes: "0",
+      },
+      schedule: WEEK_DAYS.map((day) => ({
+        day: day,
+        time: "08:00",
+        notes: "",
+        enabled: true,
+        status: "pending",
+      })),
+    },
+  );
+  const navigate = useNavigate();
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    const children = (await storage.get<Child[]>(STORAGE_KEYS.CHILDREN)) ?? [];
+
+    const isExisting = children.find((c) => c.id === formData.id);
+    const updatedChildren = isExisting
+      ? children.map((c) => (c.id === formData.id ? formData : c))
+      : [...children, formData];
+
+    await storage.set(STORAGE_KEYS.CHILDREN, updatedChildren);
+
+    navigate(ROUTES.HOME);
   };
 
   return (
@@ -47,7 +65,7 @@ export const ReminderForm = () => {
           />
         </div>
 
-        {/* Title */}
+        {/* Name */}
         <div className="flex flex-col gap-3">
           <Label htmlFor="title" className="font-medium">
             Name
@@ -56,9 +74,10 @@ export const ReminderForm = () => {
             required
             id="title"
             type="text"
-            value={formData.title}
+            maxLength={30}
+            value={formData.name}
             placeholder="Child's name"
-            onChange={(e) => setFormData({ ...formData, title: e.currentTarget.value })}
+            onChange={(e) => setFormData({ ...formData, name: e.currentTarget.value })}
           />
         </div>
 

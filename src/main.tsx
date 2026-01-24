@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
-import { Home, Settings, ReminderAdd, ReminderEdit, NotFound } from "@/pages";
+import { Home, Settings, ChildAdd, ChildEdit, NotFound } from "@/pages";
 import { ROUTES } from "@/config";
 import "./assets/css/index.css";
 
@@ -13,8 +13,8 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route index element={<Home />} />
           <Route path={ROUTES.SETTINGS} element={<Settings />} />
-          <Route path={ROUTES.REMINDER_ADD} element={<ReminderAdd />} />
-          <Route path={ROUTES.REMINDER_EDIT} element={<ReminderEdit />} />
+          <Route path={ROUTES.CHILD_ADD} element={<ChildAdd />} />
+          <Route path={ROUTES.CHILD_EDIT} element={<ChildEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
