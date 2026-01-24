@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Parents Reminder",
+  "version": "3.0.0",
+  "description": "Smart school schedule alerts with voice notifications to keep your child's day organized.",
+  "author": {
+    "name": "Oleksandr Lunov",
+    "email": "lunevdev@gmail.com"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Parents Reminder",
+    "default_icon": "icons/logo128x128.png"
+  },
+  "icons": {
+    "16": "icons/logo16x16.png",
+    "32": "icons/logo32x32.png",
+    "48": "icons/logo48x48.png",
+    "128": "icons/logo128x128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "alarms", "tts", "notifications"]
+}

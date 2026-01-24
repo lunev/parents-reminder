@@ -19,7 +19,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
   const capitalizedDay = day.charAt(0).toUpperCase() + day.slice(1);
 
   return (
-    <div className="bg-card p-3 shadow rounded-lg">
+    <div className="bg-card p-3 shadow rounded-xl">
       <div className="flex gap-3 items-center">
         <Switch
           checked={enabled}
@@ -40,7 +40,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
           type="button"
           variant="link"
           disabled={!enabled}
-          className={`flex gap-0.5  hover:text-foreground ${hasNotes ? "text-primary hover:text-primary/80" : "text-muted-foreground"} `}
+          className={`flex gap-0.5 hover:text-foreground ${hasNotes ? "text-primary hover:text-primary/80" : "text-muted-foreground"} `}
           onClick={() => setNotesOpen((prev) => !prev)}
         >
           <FileText />
