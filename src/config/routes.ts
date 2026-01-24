@@ -1,6 +1,6 @@
 export const ROUTES = {
-  HOME: '/',
-  SETTINGS: 'settings',
-  REMINDER_ADD: 'add',
-  REMINDER_EDIT: 'edit/:id',
+  HOME: "/",
+  SETTINGS: "settings",
+  CHILD_ADD: "add",
+  CHILD_EDIT: "edit/:id",
 } as const;

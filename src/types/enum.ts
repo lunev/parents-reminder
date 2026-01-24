@@ -6,3 +6,5 @@ export type WeekDay =
   | "friday"
   | "saturday"
   | "sunday";
+
+export type ChildStatus = "pending" | "notified";

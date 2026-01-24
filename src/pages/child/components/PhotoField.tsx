@@ -13,7 +13,7 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
     const file = e.target.files?.[0];
 
     if (file) {
-      if (file.size >= 1024 * 1024) {
+      if (file.size >= 2000 * 2000) {
         alert("The photo is too big");
         return;
       }
@@ -38,13 +38,7 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
   return (
     <div className="flex">
       <div className="relative">
-        <input
-          ref={photoRef}
-          type="file"
-          accept="image/png, image/jpeg"
-          hidden
-          onChange={handlePhotoChange}
-        />
+        <input ref={photoRef} type="file" accept="image/*" hidden onChange={handlePhotoChange} />
         {photo && (
           <button
             type="button"
@@ -56,7 +50,7 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
           </button>
         )}
         <div
-          className="relative w-24 h-24 rounded-full bg-muted border-2 border-dashed border-border hover:border-primary cursor-pointer overflow-hidden group"
+          className="relative size-20 rounded-full bg-muted border-2 border-dashed border-border hover:border-primary cursor-pointer overflow-hidden group"
           onClick={() => photoRef.current?.click()}
         >
           {photo ? (

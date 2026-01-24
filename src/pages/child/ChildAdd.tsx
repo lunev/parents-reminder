@@ -1,12 +1,12 @@
 import { Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { ROUTES } from "@/config";
-import { ReminderForm } from "./components/ReminderForm";
+import { ChildForm } from "./components/ChildForm";
 import { Button } from "@/components/ui/button";
 
-export const ReminderAdd = () => {
+export const ChildAdd = () => {
   return (
-    <div className="animate-in slide-in-from-right-50 duration-400">
+    <div className="animate-in slide-in-from-right-50">
       <header className="min-h-16.25 bg-card border-b border-border px-4 py-3 flex gap-3 items-center">
         <Button
           size="icon"
@@ -21,7 +21,7 @@ export const ReminderAdd = () => {
         <h1 className="text-base font-bold text-foreground capitalize">Add Child</h1>
       </header>
       <div className="bg-background">
-        <ReminderForm />
+        <ChildForm />
       </div>
     </div>
   );

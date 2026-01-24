@@ -1,12 +1,14 @@
 export const storage = {
-  get: async (key: string) => {
+  get: async <T>(key: string): Promise<T | null> => {
     const result = await chrome.storage.local.get([key]);
-    return result[key] ?? null;
+    return (result[key] as T) ?? null;
   },
-  set: async (key: string, value: unknown) => {
+
+  set: async <T>(key: string, value: T): Promise<void> => {
     await chrome.storage.local.set({ [key]: value });
   },
-  remove: async (key: string) => {
+
+  remove: async (key: string): Promise<void> => {
     await chrome.storage.local.remove(key);
   },
 };

@@ -1,40 +1,35 @@
-import { Button } from "@/components/ui/button";
-import { ROUTES } from "@/config";
-import { Plus, Settings } from "lucide-react";
-import { Link } from "react-router";
+import { useChildren } from "@/hooks";
+import { ChildCard, type ToggleChildPayload } from "./components/ChildCard";
+import { storage } from "@/lib";
+import { STORAGE_KEYS } from "@/constants/storage_keys";
+import { HomeHeader } from "./components/HomeHeader";
+import { EmptyState } from "./components/EmptyState";
 
 export const Home = () => {
+  const { children, setChildren, isLoading } = useChildren();
+
+  const handleToggle = async ({ id, enabled }: ToggleChildPayload) => {
+    if (!children) return;
+    const updated = children.map((c) => (c.id === id ? { ...c, enabled } : c));
+    setChildren(updated);
+    await storage.set(STORAGE_KEYS.CHILDREN, updated);
+  };
+
+  if (isLoading) return null;
+
   return (
     <>
-      <header className="min-h-16.25 bg-card border-b border-border px-4 py-3 flex gap-3 items-center">
-        <h1 className="text-base font-bold text-foreground capitalize flex-1">Parents Reminder</h1>
-        <div className="flex items-center gap-1">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="w-9 h-9 rounded-full hover:bg-accent"
-            asChild
-          >
-            <Link to={ROUTES.SETTINGS}>
-              <Settings className="w-5 h-5" />
-            </Link>
-          </Button>
-          <Button
-            size="icon"
-            variant="ghost"
-            className="w-9 h-9 rounded-full hover:bg-accent"
-            asChild
-          >
-            <Link to={ROUTES.REMINDER_ADD}>
-              <Plus className="w-5 h-5" />
-            </Link>
-          </Button>
-        </div>
-      </header>
-      <div className="p-5 min-h-50 animate-in slide-in-from-bottom-20 duration-500 bg-gradient-soft">
-        <nav className="flex gap-3">
-          <Link to={ROUTES.REMINDER_EDIT}>Edit #2</Link>
-        </nav>
+      <HomeHeader />
+      <div className="p-5 animate-in slide-in-from-bottom-20 duration-500 bg-gradient-soft flex flex-col gap-3">
+        {children?.length ? (
+          <>
+            {children?.map((child) => (
+              <ChildCard key={child.id} child={child} onToggle={handleToggle} />
+            ))}
+          </>
+        ) : (
+          <EmptyState />
+        )}
       </div>
     </>
   );

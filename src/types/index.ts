@@ -1,2 +1,2 @@
-export * from './enum';
-export * from './reminder';
+export * from "./enum";
+export * from "./child";

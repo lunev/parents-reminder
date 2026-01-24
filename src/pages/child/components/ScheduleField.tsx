@@ -51,6 +51,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
         <Textarea
           rows={2}
           value={notes}
+          maxLength={90}
           className="mt-3 w-full"
           placeholder={`Notes for ${capitalizedDay}...`}
           onChange={(e) => onChange({ ...schedule, notes: e.target.value })}
