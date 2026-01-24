@@ -43,8 +43,8 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
           className={`flex gap-0.5 hover:text-foreground ${hasNotes ? "text-primary hover:text-primary/80" : "text-muted-foreground"} `}
           onClick={() => setNotesOpen((prev) => !prev)}
         >
-          <FileText />
-          {notesOpen ? <ChevronUp /> : <ChevronDown />}
+          <FileText className="w-3.5! h-3.5!" />
+          {notesOpen ? <ChevronUp className="w-3! h-3!" /> : <ChevronDown className="w-3! h-3!" />}
         </Button>
       </div>
       {notesOpen && enabled && (

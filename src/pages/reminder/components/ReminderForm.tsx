@@ -9,20 +9,17 @@ import { ScheduleField } from "./ScheduleField";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 
 const initialFormData: Reminder = {
   id: uuidv4(),
   title: "",
   photo: "",
   enabled: true,
-  earlyReminder: 0,
+  earlyReminder: {
+    enabled: false,
+    minutes: "0",
+  },
   schedule: WEEK_DAYS.map((day) => ({
     day: day,
     time: "08:00",
@@ -41,7 +38,7 @@ export const ReminderForm = () => {
 
   return (
     <form className="flex flex-col gap-7 text-xs" onSubmit={handleSubmit}>
-      <div className="p-5 flex flex-col gap-7 max-h-100 overflow-auto scrollbar-hide">
+      <div className="p-5 pb-2 flex flex-col gap-7 scrollbar-hide max-h-100 overflow-auto">
         {/* Photo */}
         <div className="pt-2 flex justify-center">
           <PhotoFied
@@ -89,27 +86,43 @@ export const ReminderForm = () => {
         {/* Early Reminder */}
         <div className="flex flex-col gap-3">
           <Label htmlFor="early-reminder">Early Reminder</Label>
-          <Select
-            value={formData.earlyReminder.toString()}
-            onValueChange={(val) => setFormData({ ...formData, earlyReminder: parseInt(val) })}
-          >
-            <SelectTrigger className="bg-card w-full" id="early-reminder">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="0">None</SelectItem>
-              <SelectItem value="5">5 minutes before</SelectItem>
-              <SelectItem value="15">15 minutes before</SelectItem>
-              <SelectItem value="30">30 minutes before</SelectItem>
-              <SelectItem value="60">1 hour before</SelectItem>
-              <SelectItem value="120">2 hours before</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="bg-card p-3 shadow rounded-xl flex gap-3 items-center">
+            <Switch
+              checked={formData.earlyReminder.enabled}
+              onCheckedChange={(checked) => {
+                setFormData({
+                  ...formData,
+                  earlyReminder: {
+                    ...formData.earlyReminder,
+                    enabled: checked,
+                  },
+                });
+              }}
+            />
+            <Label htmlFor="remind-me" className="min-w-20 flex-1">
+              Remind me
+            </Label>
+            <Input
+              required
+              type="text"
+              id="remind-me"
+              value={formData.earlyReminder.minutes}
+              disabled={!formData.earlyReminder.enabled}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, "").slice(0, 3);
+                setFormData({
+                  ...formData,
+                  earlyReminder: { ...formData.earlyReminder, minutes: value },
+                });
+              }}
+            />
+            <span className="text-sm text-muted-foreground text-nowrap">min before</span>
+          </div>
         </div>
       </div>
 
       {/* Buttons */}
-      <div className="bg-card border-b border-border px-4 py-3 flex gap-3 items-center">
+      <div className="bg-card border-b border-border px-4 py-5 flex gap-3 items-center">
         <Button variant="outline" type="button" asChild className="flex-1">
           <Link to={ROUTES.HOME}>Cancel</Link>
         </Button>
