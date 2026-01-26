@@ -11,6 +11,7 @@ import {
   CloudSun,
   Eye,
   EyeClosed,
+  MapPin,
   Monitor,
   Moon,
   Sun,
@@ -109,7 +110,8 @@ export const Settings = () => {
                   />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Hide personal info like child names in public places
+                  Hide child names in notifications, badges, and voice alerts to protect privacy in
+                  public places
                 </p>
               </div>
             </div>
@@ -176,7 +178,7 @@ export const Settings = () => {
             Weather
           </h2>
 
-          <div className="bg-card rounded-xl p-4 shadow-soft">
+          <div className="bg-card rounded-xl p-4 shadow-soft flex flex-col gap-5">
             <div className="flex items-start gap-3">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
                 <CloudSun className="w-4 h-4 text-accent-foreground" />
@@ -206,16 +208,46 @@ export const Settings = () => {
                     {showApiKey ? <EyeClosed className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
-                <a
-                  href="https://openweathermap.org/api"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-primary hover:underline inline-block"
+                <Button
+                  type="button"
+                  variant="link"
+                  className="p-0 h-auto text-xs text-primary hover:underline w-fit justify-start"
+                  onClick={() => chrome.tabs.create({ url: "https://openweathermap.org/api" })}
                 >
                   Get a free API key →
-                </a>
+                </Button>
               </div>
             </div>
+            {/* Hide city field where there is no weather api? */}
+            {/* <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
+                <MapPin className="w-4 h-4 text-accent-foreground" />
+              </div>
+              <div className="flex-1 min-w-0 flex flex-col gap-2">
+                <div>
+                  <h3 className="font-medium text-foreground text-sm">Your City</h3>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Specify your city to get accurate weather
+                  </p>
+                </div>
+                <div className="relative">
+                  <Input
+                    type="text"
+                    placeholder="Enter your city"
+                    className="bg-muted text-sm pr-10"
+                    value={settings?.city ?? ""}
+                    onChange={(e) => setSettings({ ...settings!, city: e.target.value })}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowApiKey(!showApiKey)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    {showApiKey ? <EyeClosed className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>
