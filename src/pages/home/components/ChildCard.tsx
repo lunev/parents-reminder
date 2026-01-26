@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { isTimePassed } from "@/lib";
 import { format } from "date-fns";
 import { updateChildStatus, updateBadgeText } from "./ChildCard.helpers";
+import { useSettings } from "@/hooks";
 
 export type ToggleChildPayload = Pick<Child, "id" | "enabled">;
 
@@ -18,6 +19,7 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
   const navigate = useNavigate();
   const todayName = format(new Date(), "EEEE").toLowerCase();
   const todaySchedule = child.schedule.find((s) => s.day === todayName);
+  const { settings } = useSettings();
 
   const handleMarkSeen = async (e: MouseEvent, childId: string) => {
     e.stopPropagation();
@@ -40,7 +42,7 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
         {/* Avatar with photo or first letter */}
         <div className="relative">
           <div className="size-10 rounded-full bg-accent flex items-center justify-center shrink-0 overflow-hidden">
-            {child.photo ? (
+            {child.photo && !settings?.anonymousMode ? (
               <img src={child.photo} alt={child.name} className="w-full h-full object-cover" />
             ) : (
               <span className="text-base font-semibold text-accent-foreground">
@@ -60,7 +62,9 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
 
         {/* Name and time */}
         <div className="flex-1 min-w-0">
-          <h4 className="text-base font-semibold text-foreground truncate">{child.name}</h4>
+          <h4 className="text-base font-semibold text-foreground truncate transition-all">
+            {settings?.anonymousMode ? `${child.name.charAt(0)}***` : child.name}
+          </h4>
           {todaySchedule?.notes && (
             <div className="text-muted-foreground">{todaySchedule?.notes}</div>
           )}

@@ -14,7 +14,6 @@ export const useChildren = () => {
         const data = await storage.get<Child[]>(STORAGE_KEYS.CHILDREN);
         setChildren(data ?? []);
       } catch (error) {
-        console.log(error);
         setError(error instanceof Error ? error.message : "Failed to load data");
       } finally {
         setLoading(false);
