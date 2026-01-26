@@ -1,19 +1,22 @@
-// import { STORAGE_KEYS } from "@/constants/storage_keys";
+import { initMidnightAlarm, initScheduleAlarm, MIDNIGHT_ALARM, SCHEDULE_ALARM } from "./alarms";
+import { checkSchedule, resetScheduleStatus } from "./helpers";
 
-// chrome.runtime.onInstalled.addListener((details) => {
-//   if (details.reason === "install") {
-//     const defaultSettings = {
-//       notificationsEnabled: true,
-//       remindBefore: 15,
-//       theme: "system",
-//       language: "en",
-//     };
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name === SCHEDULE_ALARM) {
+    await checkSchedule();
+  }
+  if (alarm.name === MIDNIGHT_ALARM) {
+    await resetScheduleStatus();
+    chrome.action.setBadgeText({ text: "" });
+  }
+});
 
-//     chrome.storage.local.set({
-//       [STORAGE_KEYS.SETTINGS]: defaultSettings,
-//       [STORAGE_KEYS.CHILDREN]: [],
-//     });
+chrome.runtime.onInstalled.addListener(async () => {
+  await initScheduleAlarm();
+  await initMidnightAlarm();
+});
 
-//     console.log("Extension initialized with default settings.");
-//   }
-// });
+chrome.runtime.onStartup.addListener(async () => {
+  await initScheduleAlarm();
+  await initMidnightAlarm();
+});
