@@ -66,6 +66,9 @@ export const resetScheduleStatus = async () => {
 };
 
 const sendNotification = (child: Child, time: string, settings: Settings | null) => {
+  // Show and Voice weather or display nearly the time
+  // First 1000 API calls per day are FREE
+
   // Badge Notifications
   chrome.action.setBadgeText({ text: !settings?.anonymousMode ? child.name.slice(0, 5) : "." });
   chrome.action.setBadgeTextColor({ color: "#ffffff" });

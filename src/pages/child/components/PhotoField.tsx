@@ -16,12 +16,12 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
     if (file) {
       try {
         const base64Photo = await compressImage(file);
-
         if (base64Photo) {
           onChange(base64Photo);
         }
       } catch (error) {
         console.error("Compression failed:", error);
+        // Show toast Error?
       } finally {
         if (photoRef.current) photoRef.current.value = "";
       }
