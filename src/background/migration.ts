@@ -35,6 +35,7 @@ export const migratePreferences = async () => {
       openWeatherAPIKey: "",
     };
     await storage.set(STORAGE_KEYS.SETTINGS, migratedSettings);
+    await storage.remove("preferences");
   } else {
     await storage.set(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS);
   }
@@ -45,7 +46,7 @@ export const migrateReminders = async () => {
 
   if (!prevReminders || !Array.isArray(prevReminders)) return;
 
-  const migratedChildren = prevReminders.map((prevReminder): Child => {
+  const migratedChildren: Child[] = prevReminders.map((prevReminder) => {
     return {
       id: prevReminder.id,
       name: prevReminder.name,
@@ -53,20 +54,20 @@ export const migrateReminders = async () => {
       photo: "",
       schedule: WEEK_DAYS.map((day) => ({
         day: day,
-        time: prevReminder[day],
+        time: prevReminder[day] || "08:00",
         enabled: !!prevReminder[day],
         status: "pending",
         notes: "",
       })),
       earlyReminder: {
-        enabled: false,
-        minutes: "",
+        enabled: !!prevReminder.earlyReminder,
+        minutes: String(prevReminder.earlyReminder),
       },
     };
   });
 
   if (migratedChildren.length > 0) {
     await storage.set(STORAGE_KEYS.CHILDREN, migratedChildren);
-    console.log(`Successfully migrated ${migratedChildren.length} reminders.`);
+    await storage.remove("reminders");
   }
 };

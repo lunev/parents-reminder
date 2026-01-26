@@ -22,12 +22,12 @@ chrome.runtime.onStartup.addListener(async () => {
   await initMidnightAlarm();
 });
 
-// chrome.runtime.onInstalled.addListener(async (details) => {
-//   if (details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
-//     const previousVersion = details.previousVersion;
-//     if (previousVersion === "2.1.0") {
-//       migratePreferences();
-//       migrateReminders();
-//     }
-//   }
-// });
+chrome.runtime.onInstalled.addListener(async (details) => {
+  if (details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
+    const migrationNeeded = details.previousVersion === "2.1.0";
+    if (migrationNeeded) {
+      migratePreferences();
+      migrateReminders();
+    }
+  }
+});

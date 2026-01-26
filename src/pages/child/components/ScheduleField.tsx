@@ -34,6 +34,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
           disabled={!enabled}
           value={time ?? ""}
           className="max-w-40"
+          required={enabled}
           onChange={(e) => onChange({ ...schedule, time: e.target.value })}
         />
         <Button
