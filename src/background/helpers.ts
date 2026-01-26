@@ -2,7 +2,17 @@ import { AppConfig } from "@/config";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
 import { storage } from "@/lib";
 import type { Child } from "@/types";
-import { format } from "date-fns";
+import { subMinutes, parse, format } from "date-fns";
+
+const calculateTriggerTime = (originalTime: string, reminder: Child["earlyReminder"]): string => {
+  if (!reminder.enabled || !reminder.minutes) return originalTime;
+
+  const minutes = parseInt(reminder.minutes, 10);
+  if (isNaN(minutes)) return originalTime;
+
+  const date = parse(originalTime, "HH:mm", new Date());
+  return format(subMinutes(date, minutes), "HH:mm");
+};
 
 export const checkSchedule = async () => {
   const children = await storage.get<Child[]>(STORAGE_KEYS.CHILDREN);
@@ -19,7 +29,15 @@ export const checkSchedule = async () => {
     if (!child.enabled) return child;
 
     const newSchedule = child.schedule.map((s) => {
-      if (s.day === todayName && s.time === currentTime && s.status === "pending" && s.enabled) {
+      const triggerTime = calculateTriggerTime(s.time, child.earlyReminder);
+
+      if (
+        child.enabled &&
+        s.enabled &&
+        s.day === todayName &&
+        s.status === "pending" &&
+        triggerTime === currentTime
+      ) {
         hasChanges = true;
 
         sendNotification(child, s.time);
