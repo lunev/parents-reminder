@@ -3,5 +3,4 @@ export interface Settings {
   systemNotifications: boolean;
   anonymousMode: boolean;
   openWeatherAPIKey?: string;
-  updatedAt: number;
 }
