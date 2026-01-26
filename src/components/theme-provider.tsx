@@ -1,5 +1,6 @@
-import { ThemeProviderContext, type Theme } from '@/context/theme-context';
-import { useEffect, useState } from 'react';
+import { ThemeProviderContext, type Theme } from "@/context/theme-context";
+import { storage } from "@/lib";
+import { useEffect, useState } from "react";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -9,24 +10,29 @@ type ThemeProviderProps = {
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
-  storageKey = 'vite-ui-theme',
+  defaultTheme = "system",
+  storageKey = "vite-ui-theme",
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
-  );
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  useEffect(() => {
+    const loadTheme = async () => {
+      const savedTheme = await storage.get<Theme>(storageKey);
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
+    };
+    loadTheme();
+  }, [storageKey]);
 
   useEffect(() => {
     const root = document.documentElement;
+    root.classList.remove("light", "dark");
 
-    root.classList.remove('light', 'dark');
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light';
-
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
       root.classList.add(systemTheme);
       return;
     }
@@ -36,15 +42,11 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+    setTheme: (newTheme: Theme) => {
+      storage.set(storageKey, newTheme);
+      setTheme(newTheme);
     },
   };
 
-  return (
-    <ThemeProviderContext.Provider value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
-  );
+  return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
 }

@@ -73,7 +73,7 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
             {child.enabled ? (
               <>
                 {scheduleClockIcon}
-                <span>{todaySchedule?.time}</span>
+                <span>{todaySchedule?.time || "Not Scheduled"}</span>
               </>
             ) : (
               <>

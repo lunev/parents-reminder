@@ -29,15 +29,11 @@ export const checkSchedule = async () => {
     if (!child.enabled) return child;
 
     const newSchedule = child.schedule.map((s) => {
+      if (!child.enabled || !s.enabled || !s.time) return s;
+
       const triggerTime = calculateTriggerTime(s.time, child.earlyReminder);
 
-      if (
-        child.enabled &&
-        s.enabled &&
-        s.day === todayName &&
-        s.status === "pending" &&
-        triggerTime === currentTime
-      ) {
+      if (s.day === todayName && s.status === "pending" && triggerTime === currentTime) {
         hasChanges = true;
 
         sendNotification(child, s.time);
