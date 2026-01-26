@@ -9,7 +9,7 @@ export const useChildren = () => {
   const [isError, setError] = useState("");
 
   useEffect(() => {
-    const loadReminders = async () => {
+    const loadData = async () => {
       try {
         const data = await storage.get<Child[]>(STORAGE_KEYS.CHILDREN);
         setChildren(data ?? []);
@@ -21,7 +21,17 @@ export const useChildren = () => {
       }
     };
 
-    loadReminders();
+    loadData();
+
+    const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }) => {
+      if (changes[STORAGE_KEYS.CHILDREN]) {
+        const nextChildren = changes[STORAGE_KEYS.CHILDREN].newValue as Child[];
+        setChildren(nextChildren ?? []);
+      }
+    };
+
+    chrome.storage.onChanged.addListener(handleStorageChange);
+    return () => chrome.storage.onChanged.removeListener(handleStorageChange);
   }, []);
 
   return {

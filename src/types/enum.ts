@@ -7,4 +7,4 @@ export type WeekDay =
   | "saturday"
   | "sunday";
 
-export type ChildStatus = "pending" | "notified";
+export type ScheduleStatus = "pending" | "notified" | "seen";
