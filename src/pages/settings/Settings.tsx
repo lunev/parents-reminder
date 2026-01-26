@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { ROUTES } from "@/config";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme, useSettings } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,9 @@ import {
 export const Settings = () => {
   const [showApiKey, setShowApiKey] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { settings, setSettings, isLoading } = useSettings();
+
+  if (isLoading) return null;
 
   return (
     <div className="animate-in slide-in-from-right-50 duration-400">
@@ -52,7 +55,12 @@ export const Settings = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="font-medium text-foreground text-sm">Voice notifications</h3>
-                  <Switch checked={true} />
+                  <Switch
+                    checked={settings?.voiceNotifications ?? true}
+                    onCheckedChange={(checked) =>
+                      setSettings({ ...settings!, voiceNotifications: checked })
+                    }
+                  />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   Enable voice notifications to announce reminders aloud
@@ -61,7 +69,7 @@ export const Settings = () => {
             </div>
           </div>
 
-          {/* Visual Reminders */}
+          {/* System Notifications */}
           <div className="bg-card rounded-xl p-4 shadow-soft">
             <div className="flex items-start gap-3">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
@@ -70,7 +78,12 @@ export const Settings = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="font-medium text-foreground text-sm">System notifications</h3>
-                  <Switch checked={true} />
+                  <Switch
+                    checked={settings?.systemNotifications ?? true}
+                    onCheckedChange={(checked) =>
+                      setSettings({ ...settings!, systemNotifications: checked })
+                    }
+                  />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   Receive visually enhanced reminders in your system tray
@@ -88,7 +101,12 @@ export const Settings = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="font-medium text-foreground text-sm">Anonymous mode</h3>
-                  <Switch checked={true} />
+                  <Switch
+                    checked={settings?.anonymousMode ?? false}
+                    onCheckedChange={(checked) =>
+                      setSettings({ ...settings!, anonymousMode: checked })
+                    }
+                  />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   Hide personal info like child names in public places
@@ -175,6 +193,10 @@ export const Settings = () => {
                     type={showApiKey ? "text" : "password"}
                     placeholder="Enter your API key"
                     className="bg-muted text-sm pr-10"
+                    value={settings?.openWeatherAPIKey ?? ""}
+                    onChange={(e) =>
+                      setSettings({ ...settings!, openWeatherAPIKey: e.target.value })
+                    }
                   />
                   <button
                     type="button"

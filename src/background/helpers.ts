@@ -1,7 +1,7 @@
 import { AppConfig } from "@/config";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
 import { storage } from "@/lib";
-import type { Child } from "@/types";
+import { type Settings, type Child } from "@/types";
 import { subMinutes, parse, format } from "date-fns";
 
 const calculateTriggerTime = (originalTime: string, reminder: Child["earlyReminder"]): string => {
@@ -15,7 +15,10 @@ const calculateTriggerTime = (originalTime: string, reminder: Child["earlyRemind
 };
 
 export const checkSchedule = async () => {
-  const children = await storage.get<Child[]>(STORAGE_KEYS.CHILDREN);
+  const [children, settings] = await Promise.all([
+    storage.get<Child[]>(STORAGE_KEYS.CHILDREN),
+    storage.get<Settings>(STORAGE_KEYS.SETTINGS),
+  ]);
 
   if (!children?.length) return;
 
@@ -36,7 +39,7 @@ export const checkSchedule = async () => {
       if (s.day === todayName && s.status === "pending" && triggerTime === currentTime) {
         hasChanges = true;
 
-        sendNotification(child, s.time);
+        sendNotification(child, s.time, settings);
 
         return { ...s, status: "notified" };
       }
@@ -62,27 +65,29 @@ export const resetScheduleStatus = async () => {
   }
 };
 
-const sendNotification = (child: Child, time: string) => {
-  // Chrome Notification
-  chrome.notifications.create(child.id, {
-    type: "basic",
-    iconUrl: "icons/logo128x128.png",
-    title: AppConfig.name,
-    message: `${child.name}, ${time}`,
-    priority: 2,
-  });
-
-  // Badge Notification
-  chrome.action.setBadgeText({ text: child.name.slice(0, 5) });
+const sendNotification = (child: Child, time: string, settings: Settings | null) => {
+  // Badge Notifications
+  chrome.action.setBadgeText({ text: !settings?.anonymousMode ? child.name.slice(0, 5) : "." });
   chrome.action.setBadgeTextColor({ color: "#ffffff" });
   chrome.action.setBadgeBackgroundColor({ color: "#39BAFF" });
 
+  // System Notification
+  if (settings?.systemNotifications) {
+    chrome.notifications.create(child.id, {
+      type: "basic",
+      iconUrl: "icons/logo128x128.png",
+      title: AppConfig.name,
+      message: `${child.name}, ${time}`,
+      priority: 2,
+    });
+  }
+
   // Voice Notification
-  chrome.tts.speak(`${AppConfig.name}: ${child.name}`, {
-    lang: "en-US",
-    enqueue: true,
-    rate: 0.8,
-    pitch: 0.8,
-    volume: 1,
-  });
+  if (settings?.voiceNotifications) {
+    chrome.tts.speak(`${AppConfig.name}: ${!settings?.anonymousMode ? child.name : ""}`, {
+      lang: "en-US",
+      enqueue: true,
+      rate: 0.9,
+    });
+  }
 };

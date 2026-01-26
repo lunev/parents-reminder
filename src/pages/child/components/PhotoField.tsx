@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Camera, User, X } from "lucide-react";
+import { compressImage } from "@/lib";
 
 interface PhotoFieldProps {
   photo: string;
@@ -9,22 +10,21 @@ interface PhotoFieldProps {
 export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
   const photoRef = useRef<HTMLInputElement>(null);
 
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     if (file) {
-      if (file.size >= 2000 * 2000) {
-        alert("The photo is too big");
-        return;
-      }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64Photo = reader.result;
-        if (base64Photo && typeof base64Photo === "string") {
+      try {
+        const base64Photo = await compressImage(file);
+
+        if (base64Photo) {
           onChange(base64Photo);
         }
-      };
-      reader.readAsDataURL(file);
+      } catch (error) {
+        console.error("Compression failed:", error);
+      } finally {
+        if (photoRef.current) photoRef.current.value = "";
+      }
     }
   };
 
