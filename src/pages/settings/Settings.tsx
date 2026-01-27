@@ -229,76 +229,77 @@ export const Settings = () => {
             </div>
           </div>
 
-          {/* City Name Input */}
-          <div className="bg-card rounded-xl p-4 shadow-soft">
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-                <Monitor className="w-4 h-4 text-accent-foreground" />
-              </div>
-              <div className="flex-1 min-w-0 flex flex-col gap-2">
-                <div>
-                  <h3 className="font-medium text-foreground text-sm">City Name (Optional)</h3>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Override auto-location by entering your city manually
-                  </p>
-                </div>
-                <Input
-                  type="text"
-                  placeholder="e.g. Krakow, PL"
-                  className="bg-muted text-sm"
-                  value={settings?.weather?.cityName ?? ""}
-                  onChange={(e) =>
-                    setSettings({
-                      ...settings!,
-                      weather: {
-                        ...settings?.weather,
-                        cityName: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-            </div>
-          </div>
-
           {settings?.weather?.openWeatherAPIKey && (
-            <div className="bg-card rounded-xl p-4 shadow-soft">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-                  <Thermometer className="w-4 h-4 text-accent-foreground" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm mb-2">Temperature unit</h3>
-                  <RadioGroup
-                    defaultValue="C"
-                    className="flex gap-4"
-                    value={settings?.weather?.temperatureUnit}
-                    onValueChange={(value: "C" | "F") =>
-                      setSettings({
-                        ...settings!,
-                        weather: {
-                          ...settings?.weather,
-                          temperatureUnit: value,
-                        },
-                      })
-                    }
-                  >
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="C" id="temp-c" />
-                      <Label htmlFor="temp-c" className="text-sm cursor-pointer">
-                        Celsius (°C)
-                      </Label>
+            <>
+              {/* City Name Input */}
+              <div className="bg-card rounded-xl p-4 shadow-soft">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
+                    <Monitor className="w-4 h-4 text-accent-foreground" />
+                  </div>
+                  <div className="flex-1 min-w-0 flex flex-col gap-2">
+                    <div>
+                      <h3 className="font-medium text-foreground text-sm">City Name (Optional)</h3>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Override auto-location by entering your city manually
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="F" id="temp-f" />
-                      <Label htmlFor="temp-f" className="text-sm cursor-pointer">
-                        Fahrenheit (°F)
-                      </Label>
-                    </div>
-                  </RadioGroup>
+                    <Input
+                      type="text"
+                      placeholder="e.g. Krakow, PL"
+                      className="bg-muted text-sm"
+                      value={settings?.weather?.cityName ?? ""}
+                      onChange={(e) =>
+                        setSettings({
+                          ...settings!,
+                          weather: {
+                            ...settings?.weather,
+                            cityName: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className="bg-card rounded-xl p-4 shadow-soft">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
+                    <Thermometer className="w-4 h-4 text-accent-foreground" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-foreground text-sm mb-2">Temperature unit</h3>
+                    <RadioGroup
+                      defaultValue="C"
+                      className="flex gap-4"
+                      value={settings?.weather?.temperatureUnit}
+                      onValueChange={(value: "C" | "F") =>
+                        setSettings({
+                          ...settings!,
+                          weather: {
+                            ...settings?.weather,
+                            temperatureUnit: value,
+                          },
+                        })
+                      }
+                    >
+                      <div className="flex items-center gap-2">
+                        <RadioGroupItem value="C" id="temp-c" />
+                        <Label htmlFor="temp-c" className="text-sm cursor-pointer">
+                          Celsius (°C)
+                        </Label>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <RadioGroupItem value="F" id="temp-f" />
+                        <Label htmlFor="temp-f" className="text-sm cursor-pointer">
+                          Fahrenheit (°F)
+                        </Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
