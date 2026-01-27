@@ -4,6 +4,7 @@ import { Plus, Settings } from "lucide-react";
 import { AppConfig, ROUTES } from "@/config";
 import logo from "@/assets/images/logo128x128.png";
 import { CurrentDateTime } from "./CurrentDateTime";
+import WeatherWidget from "./WeatherWidget";
 
 export const HomeHeader: React.FC = () => {
   return (
@@ -15,7 +16,10 @@ export const HomeHeader: React.FC = () => {
           <h1 className="text-base font-bold text-foreground capitalize flex-1">
             {AppConfig.name}
           </h1>
-          <CurrentDateTime />
+          <div className="flex gap-1">
+            <CurrentDateTime />
+            <WeatherWidget />
+          </div>
         </div>
       </div>
 

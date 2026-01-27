@@ -29,10 +29,10 @@ export const migratePreferences = async () => {
 
   if (prevPreferences) {
     const migratedSettings: Settings = {
+      ...DEFAULT_SETTINGS,
       voiceNotifications: prevPreferences.voice ?? true,
       systemNotifications: prevPreferences.alerts ?? true,
       anonymousMode: prevPreferences.anonymous ?? false,
-      openWeatherAPIKey: "",
     };
     await storage.set(STORAGE_KEYS.SETTINGS, migratedSettings);
     await storage.remove("preferences");

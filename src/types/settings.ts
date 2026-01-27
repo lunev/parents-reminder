@@ -2,5 +2,9 @@ export interface Settings {
   voiceNotifications: boolean;
   systemNotifications: boolean;
   anonymousMode: boolean;
-  openWeatherAPIKey?: string;
+  weather: {
+    openWeatherAPIKey: string;
+    temperatureUnit: "C" | "F";
+    cityName?: string;
+  };
 }

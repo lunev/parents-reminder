@@ -4,5 +4,9 @@ export const DEFAULT_SETTINGS: Settings = {
   voiceNotifications: true,
   systemNotifications: true,
   anonymousMode: false,
-  openWeatherAPIKey: "",
+  weather: {
+    openWeatherAPIKey: "",
+    temperatureUnit: "C",
+    cityName: "",
+  },
 };
