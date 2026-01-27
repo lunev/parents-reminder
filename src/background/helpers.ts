@@ -65,7 +65,7 @@ export const resetScheduleStatus = async () => {
   }
 };
 
-const sendNotification = (child: Child, time: string, settings: Settings | null) => {
+const sendNotification = async (child: Child, time: string, settings: Settings | null) => {
   // Show and Voice weather or display nearly the time
   // First 1000 API calls per day are FREE
 
@@ -93,4 +93,26 @@ const sendNotification = (child: Child, time: string, settings: Settings | null)
       rate: 0.9,
     });
   }
+};
+
+export const getLocation = async (): Promise<{ lat: number; lon: number }> => {
+  const hasDocument = await chrome.offscreen.hasDocument();
+
+  if (!hasDocument) {
+    await chrome.offscreen.createDocument({
+      url: "offscreen.html",
+      reasons: [chrome.offscreen.Reason.GEOLOCATION],
+      justification: "To get user location for the weather",
+    });
+  }
+
+  const result = await chrome.runtime.sendMessage({
+    type: "get-geolocation",
+    target: "offscreen",
+  });
+
+  await chrome.offscreen.closeDocument();
+
+  if (result.error) throw new Error(result.error);
+  return result;
 };
