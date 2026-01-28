@@ -66,9 +66,6 @@ export const resetScheduleStatus = async () => {
 };
 
 const sendNotification = async (child: Child, time: string, settings: Settings | null) => {
-  // Show and Voice weather or display nearly the time
-  // First 1000 API calls per day are FREE
-
   // Badge Notifications
   chrome.action.setBadgeText({ text: !settings?.anonymousMode ? child.name.slice(0, 5) : "." });
   chrome.action.setBadgeTextColor({ color: "#ffffff" });
@@ -78,7 +75,7 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
   if (settings?.systemNotifications) {
     chrome.notifications.create(child.id, {
       type: "basic",
-      iconUrl: "icons/logo128x128.png",
+      iconUrl: child.photo ?? "icons/logo128x128.png",
       title: AppConfig.name,
       message: `${child.name}, ${time}`,
       priority: 2,
@@ -93,26 +90,4 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
       rate: 0.9,
     });
   }
-};
-
-export const getLocation = async (): Promise<{ lat: number; lon: number }> => {
-  const hasDocument = await chrome.offscreen.hasDocument();
-
-  if (!hasDocument) {
-    await chrome.offscreen.createDocument({
-      url: "offscreen.html",
-      reasons: [chrome.offscreen.Reason.GEOLOCATION],
-      justification: "To get user location for the weather",
-    });
-  }
-
-  const result = await chrome.runtime.sendMessage({
-    type: "get-geolocation",
-    target: "offscreen",
-  });
-
-  await chrome.offscreen.closeDocument();
-
-  if (result.error) throw new Error(result.error);
-  return result;
 };

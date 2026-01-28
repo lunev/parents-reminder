@@ -1,28 +1,11 @@
-import { useState } from "react";
 import { Link } from "react-router";
 import { ROUTES } from "@/config";
 import { useTheme, useSettings } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
-import {
-  ArrowLeft,
-  Bell,
-  CloudSun,
-  Eye,
-  EyeClosed,
-  Monitor,
-  Moon,
-  Sun,
-  Thermometer,
-  UserX,
-  Volume2,
-} from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
+import { ArrowLeft, Bell, Monitor, Moon, Sun, UserX, Volume2 } from "lucide-react";
 
 export const Settings = () => {
-  const [showApiKey, setShowApiKey] = useState(false);
   const { theme, setTheme } = useTheme();
   const { settings, setSettings, isLoading } = useSettings();
 
@@ -172,135 +155,6 @@ export const Settings = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Weather Section */}
-        <div className="flex flex-col gap-3">
-          <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-            Weather
-          </h2>
-
-          <div className="bg-card rounded-xl p-4 shadow-soft flex flex-col gap-5">
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-                <CloudSun className="w-4 h-4 text-accent-foreground" />
-              </div>
-              <div className="flex-1 min-w-0 flex flex-col gap-2">
-                <div>
-                  <h3 className="font-medium text-foreground text-sm">OpenWeather API Key</h3>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Enter your API key to display real weather data
-                  </p>
-                </div>
-                <div className="relative">
-                  <Input
-                    type={showApiKey ? "text" : "password"}
-                    placeholder="Enter your API key"
-                    className="bg-muted text-sm pr-10"
-                    value={settings?.weather?.openWeatherAPIKey ?? ""}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings!,
-                        weather: {
-                          ...settings?.weather,
-                          openWeatherAPIKey: e.target.value,
-                          temperatureUnit: settings?.weather?.temperatureUnit ?? "C",
-                        },
-                      })
-                    }
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowApiKey(!showApiKey)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  >
-                    {showApiKey ? <EyeClosed className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-                <Button
-                  type="button"
-                  variant="link"
-                  className="p-0 h-auto text-xs text-primary hover:underline w-fit justify-start"
-                  onClick={() => chrome.tabs.create({ url: "https://openweathermap.org/api" })}
-                >
-                  Get a free API key →
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {settings?.weather?.openWeatherAPIKey && (
-            <>
-              {/* City Name Input */}
-              <div className="bg-card rounded-xl p-4 shadow-soft">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-                    <Monitor className="w-4 h-4 text-accent-foreground" />
-                  </div>
-                  <div className="flex-1 min-w-0 flex flex-col gap-2">
-                    <div>
-                      <h3 className="font-medium text-foreground text-sm">City Name (Optional)</h3>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Override auto-location by entering your city manually
-                      </p>
-                    </div>
-                    <Input
-                      type="text"
-                      placeholder="e.g. Krakow, PL"
-                      className="bg-muted text-sm"
-                      value={settings?.weather?.cityName ?? ""}
-                      onChange={(e) =>
-                        setSettings({
-                          ...settings!,
-                          weather: {
-                            ...settings?.weather,
-                            cityName: e.target.value,
-                          },
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="bg-card rounded-xl p-4 shadow-soft">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-                    <Thermometer className="w-4 h-4 text-accent-foreground" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-foreground text-sm mb-2">Temperature unit</h3>
-                    <RadioGroup
-                      defaultValue="C"
-                      className="flex gap-4"
-                      value={settings?.weather?.temperatureUnit}
-                      onValueChange={(value: "C" | "F") =>
-                        setSettings({
-                          ...settings!,
-                          weather: {
-                            ...settings?.weather,
-                            temperatureUnit: value,
-                          },
-                        })
-                      }
-                    >
-                      <div className="flex items-center gap-2">
-                        <RadioGroupItem value="C" id="temp-c" />
-                        <Label htmlFor="temp-c" className="text-sm cursor-pointer">
-                          Celsius (°C)
-                        </Label>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <RadioGroupItem value="F" id="temp-f" />
-                        <Label htmlFor="temp-f" className="text-sm cursor-pointer">
-                          Fahrenheit (°F)
-                        </Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
         </div>
       </div>
     </div>
