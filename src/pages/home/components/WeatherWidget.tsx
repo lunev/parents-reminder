@@ -36,7 +36,7 @@ const WeatherWidget = () => {
       <TooltipTrigger asChild>
         <div className="pl-1 flex items-center text-xs text-muted-foreground cursor-help animate-in fade-in hover:cursor-default">
           <div className="mr-1 text-accent-foreground">{Icon}</div>
-          <span className="font-medium">{weather.main.temp.toFixed()}</span>
+          <span className="font-medium">{Math.round(weather.main.temp)}</span>
           <span>°{unit}</span>
         </div>
       </TooltipTrigger>
@@ -46,7 +46,7 @@ const WeatherWidget = () => {
           <Thermometer className="size-3" />
           <span>Feels like</span>
           <span className="font-medium">
-            {weather.main.feels_like.toFixed()}°{unit}
+            {Math.round(weather.main.feels_like)}°{unit}
           </span>
         </div>
         <div className="flex items-center gap-1 text-[11px]">
