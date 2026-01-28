@@ -1,4 +1,5 @@
 import { AppConfig } from "@/config";
+import { DEFAULT_SETTINGS } from "@/constants";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
 import { storage } from "@/lib";
 import { type Settings, type Child } from "@/types";
@@ -90,4 +91,8 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
       rate: 0.9,
     });
   }
+};
+
+export const initSettings = async () => {
+  await storage.set(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS);
 };
