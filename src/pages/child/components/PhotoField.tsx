@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Camera, User, X } from "lucide-react";
 import { compressImage } from "@/lib";
+import { toast } from "sonner";
 
 interface PhotoFieldProps {
   photo: string;
@@ -8,6 +9,7 @@ interface PhotoFieldProps {
 }
 
 export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
   const photoRef = useRef<HTMLInputElement>(null);
 
   const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,35 +21,47 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
         if (base64Photo) {
           onChange(base64Photo);
         }
-      } catch (error) {
-        console.error("Compression failed:", error);
-        // Show toast Error?
+      } catch {
+        toast.error("Failed to load a photo");
       } finally {
         if (photoRef.current) photoRef.current.value = "";
       }
     }
   };
 
-  const handleRemovePhoto = () => {
-    onChange("");
-    if (photoRef.current) {
-      photoRef.current.value = "";
+  const handleRemovePhoto = async () => {
+    if (confirmingDelete) {
+      onChange("");
+      if (photoRef.current) {
+        photoRef.current.value = "";
+      }
+    } else {
+      setConfirmingDelete(true);
     }
   };
+
+  useEffect(() => {
+    if (confirmingDelete) {
+      const timer = setTimeout(() => setConfirmingDelete(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [confirmingDelete]);
 
   return (
     <div className="flex">
       <div className="relative">
         <input ref={photoRef} type="file" accept="image/*" hidden onChange={handlePhotoChange} />
         {photo && (
-          <button
-            type="button"
-            onClick={handleRemovePhoto}
-            className="absolute -top-1 -right-1 z-10 bg-destructive text-background rounded-full p-1 shadow-md hover:scale-110 active:scale-95 transition-all cursor-pointer"
-            title="Remove photo"
-          >
-            <X size={12} />
-          </button>
+          <>
+            <button
+              type="button"
+              onClick={handleRemovePhoto}
+              className="absolute -top-1 -right-1 z-10 bg-destructive text-background rounded-full p-1 shadow-md hover:scale-110 active:scale-95 transition-all cursor-pointer"
+              title="Remove photo"
+            >
+              {confirmingDelete ? <span className="text-[10px]">Sure?</span> : <X size={12} />}
+            </button>
+          </>
         )}
         <div
           className="relative size-20 rounded-full bg-muted border-2 border-dashed border-border hover:border-primary cursor-pointer overflow-hidden group"
