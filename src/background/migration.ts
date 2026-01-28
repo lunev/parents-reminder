@@ -1,12 +1,6 @@
-import { DEFAULT_SETTINGS, STORAGE_KEYS, WEEK_DAYS } from "@/constants";
+import { STORAGE_KEYS, WEEK_DAYS } from "@/constants";
 import { storage } from "@/lib";
-import type { Child, Settings } from "@/types";
-
-interface prevPreferences {
-  voice: boolean;
-  alerts: boolean;
-  anonymous: boolean;
-}
+import type { Child } from "@/types";
 
 export type prevReminder = {
   id: string;
@@ -22,23 +16,6 @@ export type prevReminder = {
   earlyReminder: number;
   status: "pending" | "notified";
   active: boolean;
-};
-
-export const migratePreferences = async () => {
-  const prevPreferences = await storage.get<prevPreferences>("preferences");
-
-  if (prevPreferences) {
-    const migratedSettings: Settings = {
-      ...DEFAULT_SETTINGS,
-      voiceNotifications: prevPreferences.voice ?? true,
-      systemNotifications: prevPreferences.alerts ?? true,
-      anonymousMode: prevPreferences.anonymous ?? false,
-    };
-    await storage.set(STORAGE_KEYS.SETTINGS, migratedSettings);
-    await storage.remove("preferences");
-  } else {
-    await storage.set(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS);
-  }
 };
 
 export const migrateReminders = async () => {

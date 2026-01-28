@@ -1,6 +1,6 @@
 import { initMidnightAlarm, initScheduleAlarm, MIDNIGHT_ALARM, SCHEDULE_ALARM } from "./alarms";
-import { checkSchedule, resetScheduleStatus } from "./helpers";
-import { migratePreferences, migrateReminders } from "./migration";
+import { checkSchedule, initSettings, resetScheduleStatus } from "./helpers";
+import { migrateReminders } from "./migration";
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name === SCHEDULE_ALARM) {
@@ -12,22 +12,20 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
   }
 });
 
-chrome.runtime.onInstalled.addListener(async () => {
+chrome.runtime.onInstalled.addListener(async (details) => {
+  await initSettings();
   await initScheduleAlarm();
   await initMidnightAlarm();
+
+  if (details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
+    const migrationNeeded = details.previousVersion === "2.1.0";
+    if (migrationNeeded) {
+      migrateReminders();
+    }
+  }
 });
 
 chrome.runtime.onStartup.addListener(async () => {
   await initScheduleAlarm();
   await initMidnightAlarm();
-});
-
-chrome.runtime.onInstalled.addListener(async (details) => {
-  if (details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
-    const migrationNeeded = details.previousVersion === "2.1.0";
-    if (migrationNeeded) {
-      migratePreferences();
-      migrateReminders();
-    }
-  }
 });
