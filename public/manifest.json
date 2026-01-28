@@ -22,5 +22,5 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": ["storage", "alarms", "tts", "notifications", "geolocation", "offscreen"]
+  "permissions": ["storage", "alarms", "tts", "notifications", "geolocation"]
 }

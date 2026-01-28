@@ -4,7 +4,6 @@ import { Plus, Settings } from "lucide-react";
 import { AppConfig, ROUTES } from "@/config";
 import logo from "@/assets/images/logo128x128.png";
 import { CurrentDateTime } from "./CurrentDateTime";
-import WeatherWidget from "./WeatherWidget";
 
 export const HomeHeader: React.FC = () => {
   return (
@@ -18,7 +17,6 @@ export const HomeHeader: React.FC = () => {
           </h1>
           <div className="flex gap-1">
             <CurrentDateTime />
-            <WeatherWidget />
           </div>
         </div>
       </div>
