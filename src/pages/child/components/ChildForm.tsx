@@ -49,7 +49,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
       schedule: formData.schedule.map((s) => ({ ...s, status: "pending" })),
     };
 
-    const isExisting = children.some((c) => c.id === formData.id);
+    const isExisting = children.find((c) => c.id === formData.id);
 
     const updatedChildren = isExisting
       ? children.map((c) => (c.id === formData.id ? preparedChild : c))

@@ -4,6 +4,7 @@ import { HashRouter, Route, Routes } from "react-router";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import { Home, Settings, ChildAdd, ChildEdit, NotFound } from "@/pages";
 import { ROUTES } from "@/config";
+import { Toaster } from "@/components/ui/sonner";
 import "./assets/css/index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path={ROUTES.CHILD_EDIT} element={<ChildEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Toaster position="top-right" />
       </HashRouter>
     </ThemeProvider>
   </StrictMode>,
