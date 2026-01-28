@@ -42,24 +42,19 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    // 1. Fetch current children list from storage
     const children = (await storage.get<Child[]>(STORAGE_KEYS.CHILDREN)) ?? [];
 
-    // 2. Prepare child data and reset all schedules to 'pending'
-    // to ensure new or updated times will trigger future notifications
     const preparedChild: Child = {
       ...formData,
       schedule: formData.schedule.map((s) => ({ ...s, status: "pending" })),
     };
 
-    // 3. Determine if we are updating an existing child or adding a new one
     const isExisting = children.some((c) => c.id === formData.id);
 
     const updatedChildren = isExisting
-      ? children.map((c) => (c.id === formData.id ? preparedChild : c)) // Update match
-      : [...children, preparedChild]; // Add new
+      ? children.map((c) => (c.id === formData.id ? preparedChild : c))
+      : [...children, preparedChild];
 
-    // 4. Persist updated data and redirect to Home
     await storage.set(STORAGE_KEYS.CHILDREN, updatedChildren);
     navigate(ROUTES.HOME);
   };
