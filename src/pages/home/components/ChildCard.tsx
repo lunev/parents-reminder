@@ -5,8 +5,9 @@ import type { Child } from "@/types";
 import { Switch } from "@/components/ui/switch";
 import { isTimePassed } from "@/lib";
 import { format } from "date-fns";
-import { updateChildStatus, updateBadgeText } from "./ChildCard.helpers";
+import { updateChildStatus } from "./ChildCard.helpers";
 import { useSettings } from "@/hooks";
+import { updateBadgeText } from "@/lib/badge";
 
 export type ToggleChildPayload = Pick<Child, "id" | "enabled">;
 

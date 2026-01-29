@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useChildren } from "@/hooks";
 import { storage } from "@/lib";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
+import { updateBadgeText } from "@/lib/badge";
 
 export const ChildEdit = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export const ChildEdit = () => {
     if (confirmingDelete) {
       const updatedChildren = children.filter((child) => child.id !== id);
       await storage.set(STORAGE_KEYS.CHILDREN, updatedChildren);
+      await updateBadgeText();
       navigate(ROUTES.HOME);
     } else {
       setConfirmingDelete(true);

@@ -76,7 +76,7 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
   if (settings?.systemNotifications) {
     chrome.notifications.create(child.id, {
       type: "basic",
-      iconUrl: child.photo ?? "icons/logo128x128.png",
+      iconUrl: child.photo || "icons/logo128x128.png",
       title: AppConfig.name,
       message: `${child.name}, ${time}`,
       priority: 2,
