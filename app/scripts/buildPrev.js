@@ -1,10 +1,10 @@
 /**
  * RESTORE PREVIOUS VERSION SCRIPT
  * * BEST PRACTICES & USAGE:
- * 1. Default: `npm run prev`       -> Restores the latest ZIP from /release to /build.
+ * 1. Default: `npm run prev`       -> Restores the latest ZIP from /chrome-webstore/releases to app/build.
  * 2. Specific: `npm run prev 1.0.2` -> Searches for a file containing "1.0.2" and restores it.
  * 3. Workflow: Use this to compare current dev code with production or to debug old versions.
- * 4. Safety: This script WIPES the /build folder before unzipping to avoid "file ghosts".
+ * 4. Safety: This script WIPES the app/build folder before unzipping to avoid "file ghosts".
  * 5. Chrome: After running, always go to chrome://extensions and click the "Refresh" icon.
  */
 
@@ -17,14 +17,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const unzipPrev = async () => {
   const buildDir = path.resolve(__dirname, "..", "build");
-  const releaseDir = path.resolve(__dirname, "..", "release");
+  const releaseDir = path.resolve(__dirname, "..", "..", "chrome-webstore", "releases");
 
   // npm run prev 1.0.2
   // targetVersion === 1.0.2
   const targetVersion = process.argv[2];
 
   if (!fs.existsSync(releaseDir)) {
-    console.error("❌ Folder 'release' not found.");
+    console.error("❌ Folder 'chrome-webstore/releases' not found.");
     return;
   }
 
@@ -52,7 +52,7 @@ const unzipPrev = async () => {
       .sort((a, b) => b.time - a.time);
 
     if (sortedFiles.length === 0) {
-      console.error("❌ No ZIP files found in 'release' folder.");
+      console.error("❌ No ZIP files found in 'chrome-webstore/releases' folder.");
       return;
     }
     selectedFile = sortedFiles[0].name;
@@ -68,7 +68,7 @@ const unzipPrev = async () => {
 
     await extract(zipPath, { dir: buildDir });
 
-    console.log(`✅ Success! Version from ${selectedFile} is now in /build.`);
+    console.log(`✅ Success! Version from ${selectedFile} is now in app/build.`);
     console.log("👉 Go to chrome://extensions and click 'Refresh'.");
   } catch (err) {
     console.error("❌ Extraction failed:", err);

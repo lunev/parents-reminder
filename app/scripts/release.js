@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const createRelease = async () => {
   const buildDir = path.resolve(__dirname, "..", "build");
-  const releaseDir = path.resolve(__dirname, "..", "release");
+  const releaseDir = path.resolve(__dirname, "..", "..", "chrome-webstore", "releases");
   const manifestPath = path.resolve(__dirname, "..", "public", "manifest.json");
 
   const pkg = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
@@ -18,7 +18,7 @@ const createRelease = async () => {
 
   const mainZip = path.join(releaseDir, `${shortName}-v${version}.zip`);
 
-  if (!fs.existsSync(releaseDir)) fs.mkdirSync(releaseDir);
+  if (!fs.existsSync(releaseDir)) fs.mkdirSync(releaseDir, { recursive: true });
   if (fs.existsSync(mainZip)) fs.unlinkSync(mainZip);
 
   try {
