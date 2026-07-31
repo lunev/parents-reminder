@@ -1,21 +1,25 @@
-Parents Reminder — Chrome Web Store listing description (starter draft, plain text for the actual store field, limit 16,000 characters)
+Never miss school pickup, drop-off, or a scheduled activity again. Parents Reminder is a simple, privacy-friendly Chrome extension that keeps you on top of your kids' daily school schedule with smart reminders — including spoken voice alerts — right from your browser toolbar.
 
-Smart school schedule alerts with voice notifications to keep your child's day organized.
+Whether you're juggling school pickup times, extracurricular activities, or daily routines for multiple children, Parents Reminder turns your weekly schedule into automatic, on-time notifications, so you never have to check a calendar app or a sticky note again.
 
-Parents Reminder helps you keep track of your children's school days without digging through paper schedules or a shared calendar app. Add each child once, set up their weekly class or activity schedule, and let the extension handle the reminders — including a spoken (text-to-speech) voice alert so you don't have to be looking at the screen when it matters.
+FEATURES
 
-Key features:
-- Add and manage multiple children, each with their own schedule
-- Set recurring weekly reminders per day
-- Get desktop notifications at the right time, powered by Chrome's alarms API
-- Optional voice announcements (Chrome's built-in TTS) read the reminder out loud
-- Light/dark theme support
-- All data stays local in your browser's storage — nothing is sent to an external server
+• Add multiple children, each with their own weekly schedule
+• Set a specific reminder time for every day of the week
+• Get an early reminder (for example, 15 minutes before) so you always have time to prepare
+• Desktop notifications appear right when you need them
+• Voice reminders read the alert out loud — perfect for when you can't look at the screen
+• A toolbar badge shows at a glance which child needs your attention
+• Anonymous mode hides names in notifications and the badge, for privacy in public or shared spaces
+• Light, dark, and system theme support
+• No sign-up, no account, no cloud sync — everything is stored locally in your browser
 
-Permissions used:
-- storage — to save your children and their schedules locally
-- alarms — to trigger reminders at the scheduled times
-- tts — to read reminders aloud
-- notifications — to show the desktop alert when a reminder fires
+WHY PARENTS USE PARENTS REMINDER
 
-This is a starter draft based on the extension's manifest description and features — review and edit before submitting to the Chrome Web Store.
+Busy parents and caregivers use Parents Reminder to stay organized around school pickup times, after-school activities, sports practice, and daily routines for one or more children. It's a lightweight alternative to shared calendars or reminder apps when all you need is a simple, reliable school schedule reminder built right into Chrome.
+
+PRIVACY FIRST
+
+Parents Reminder never sends your data anywhere. Your children's names, schedules, and settings are stored only in your browser's local storage — not on a server, not in the cloud, and never shared with third parties.
+
+Add your first child and set your first reminder in under a minute.
