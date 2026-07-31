@@ -9,7 +9,7 @@ import "./assets/css/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <HashRouter>
         <Routes>
           <Route index element={<Home />} />

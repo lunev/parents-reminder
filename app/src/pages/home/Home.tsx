@@ -1,12 +1,14 @@
-import { useChildren } from "@/hooks";
+import { useChangelog, useChildren } from "@/hooks";
 import { ChildCard, type ToggleChildPayload } from "./components/ChildCard";
 import { storage } from "@/lib";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
 import { HomeHeader } from "./components/HomeHeader";
 import { EmptyState } from "./components/EmptyState";
+import { Changelog } from "./components/Changelog";
 
 export const Home = () => {
   const { children, setChildren, isLoading } = useChildren();
+  const { pendingEntry, dismiss } = useChangelog();
 
   const handleToggle = async ({ id, enabled }: ToggleChildPayload) => {
     if (!children) return;
@@ -20,6 +22,7 @@ export const Home = () => {
   return (
     <>
       <HomeHeader />
+      <Changelog entry={pendingEntry} onDismiss={dismiss} />
       <div className="p-5 animate-in slide-in-from-bottom-20 duration-500 bg-gradient-soft flex flex-col gap-3">
         {children?.length ? (
           <>
