@@ -5,7 +5,10 @@ import { storage } from "@/lib";
 import { type Settings, type Child } from "@/types";
 import { subMinutes, parse, format } from "date-fns";
 
-const calculateTriggerTime = (originalTime: string, reminder: Child["earlyReminder"]): string => {
+export const calculateTriggerTime = (
+  originalTime: string,
+  reminder: Child["earlyReminder"],
+): string => {
   if (!reminder.enabled || !reminder.minutes) return originalTime;
 
   const minutes = parseInt(reminder.minutes, 10);
