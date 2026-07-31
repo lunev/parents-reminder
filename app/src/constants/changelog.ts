@@ -2,6 +2,11 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.1.1",
+    date: "2026-07-31",
+    items: ["Fixed the toolbar badge getting stuck after editing a notified child."],
+  },
+  {
     version: "3.1.0",
     date: "2026-07-31",
     items: [
