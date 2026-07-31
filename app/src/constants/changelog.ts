@@ -2,16 +2,12 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
-    version: "3.1.1",
-    date: "2026-07-31",
-    items: ["Fixed the toolbar badge getting stuck after editing a notified child."],
-  },
-  {
-    version: "3.1.0",
+    version: "3.0.2",
     date: "2026-07-31",
     items: [
       "Added a what's new screen so you can see what changed after each update.",
       "The extension now follows your system's light/dark setting by default.",
+      "Fixed the toolbar badge getting stuck after editing a notified child.",
     ],
   },
 ];
