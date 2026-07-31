@@ -10,8 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { storage } from "@/lib/storage";
-import { STORAGE_KEYS } from "@/constants/storage_keys";
+import { saveChild } from "./ChildForm.helpers";
 
 interface ChildFormProps {
   child?: Child;
@@ -42,20 +41,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    const children = (await storage.get<Child[]>(STORAGE_KEYS.CHILDREN)) ?? [];
-
-    const preparedChild: Child = {
-      ...formData,
-      schedule: formData.schedule.map((s) => ({ ...s, status: "pending" })),
-    };
-
-    const isExisting = children.find((c) => c.id === formData.id);
-
-    const updatedChildren = isExisting
-      ? children.map((c) => (c.id === formData.id ? preparedChild : c))
-      : [...children, preparedChild];
-
-    await storage.set(STORAGE_KEYS.CHILDREN, updatedChildren);
+    await saveChild(formData);
     navigate(ROUTES.HOME);
   };
 
