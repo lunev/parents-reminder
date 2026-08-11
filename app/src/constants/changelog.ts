@@ -2,6 +2,14 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.0.3",
+    date: "2026-08-11",
+    items: [
+      "Widened the popup for a more comfortable layout.",
+      "Removed page transition animations for snappier navigation.",
+    ],
+  },
+  {
     version: "3.0.2",
     date: "2026-07-31",
     items: [

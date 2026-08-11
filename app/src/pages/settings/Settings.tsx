@@ -12,7 +12,7 @@ export const Settings = () => {
   if (isLoading) return null;
 
   return (
-    <div className="animate-in slide-in-from-right-50 duration-400">
+    <div>
       <header className="min-h-16.25 bg-card border-b border-border px-4 py-3 flex gap-3 items-center">
         <Button
           size="icon"
