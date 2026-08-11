@@ -9,6 +9,7 @@ export default defineConfig({
 
   build: {
     outDir: "build",
+    modulePreload: false,
     rollupOptions: {
       input: {
         popup: path.resolve(__dirname, "index.html"),
