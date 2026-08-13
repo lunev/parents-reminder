@@ -48,7 +48,6 @@ Load it unpacked in Chrome: `npm run build`, then go to `chrome://extensions` â†
 | `npm run watch` | Dev-mode build with `--watch` |
 | `npm run build` | Typecheck and build to `app/build` |
 | `npm run release` | Build, then zip `app/build` into `chrome-webstore/releases/<name>-v<version>.zip` |
-| `npm run prev [version]` | Restore a previous release zip into `app/build` for comparison/debugging |
 | `npm run lint` / `npm run format` | Lint / format with ESLint / Prettier |
 
 GitHub Actions (`.github/workflows/ci.yml`) runs typecheck, lint, and build on every push/PR to `main`.
