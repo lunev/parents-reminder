@@ -1,5 +1,6 @@
 import { FileText, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import type { Schedule } from "@/types";
@@ -19,7 +20,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
   const capitalizedDay = day.charAt(0).toUpperCase() + day.slice(1);
 
   return (
-    <div className="bg-card p-3 shadow rounded-xl">
+    <Card className="p-3">
       <div className="flex gap-3 items-center">
         <Switch
           checked={enabled}
@@ -58,6 +59,6 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
           onChange={(e) => onChange({ ...schedule, notes: e.target.value })}
         />
       )}
-    </div>
+    </Card>
   );
 };

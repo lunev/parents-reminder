@@ -6,6 +6,7 @@ import { WEEK_DAYS } from "@/constants";
 import { ROUTES } from "@/config";
 import { PhotoFied } from "./PhotoField";
 import { ScheduleField } from "./ScheduleField";
+import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -96,7 +97,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
         {/* Early Reminder */}
         <div className="flex flex-col gap-3">
           <Label htmlFor="early-reminder">Early Reminder</Label>
-          <div className="bg-card p-3 shadow rounded-xl flex gap-3 items-center">
+          <Card className="p-3 flex gap-3 items-center">
             <Switch
               checked={formData.earlyReminder.enabled}
               onCheckedChange={(checked) => {
@@ -127,7 +128,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
               }}
             />
             <span className="text-sm text-muted-foreground text-nowrap">min before</span>
-          </div>
+          </Card>
         </div>
       </div>
 

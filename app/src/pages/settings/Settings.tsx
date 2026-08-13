@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { ROUTES } from "@/config";
 import { useTheme, useSettings } from "@/hooks";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { ArrowLeft, Bell, Monitor, Moon, Sun, UserX, Volume2 } from "lucide-react";
 
@@ -33,7 +34,7 @@ export const Settings = () => {
           </h2>
 
           {/* Voice Notifications */}
-          <div className="bg-card rounded-xl p-4 shadow-soft">
+          <Card className="p-4">
             <div className="flex items-start gap-3">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
                 <Volume2 className="w-4 h-4 text-accent-foreground" />
@@ -53,10 +54,10 @@ export const Settings = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* System Notifications */}
-          <div className="bg-card rounded-xl p-4 shadow-soft">
+          <Card className="p-4">
             <div className="flex items-start gap-3">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
                 <Bell className="w-4 h-4 text-accent-foreground" />
@@ -76,10 +77,10 @@ export const Settings = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Anonymous Mode */}
-          <div className="bg-card rounded-xl p-4 shadow-soft">
+          <Card className="p-4">
             <div className="flex items-start gap-3">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
                 <UserX className="w-4 h-4 text-accent-foreground" />
@@ -100,7 +101,7 @@ export const Settings = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
 
         {/* Appearance Section */}
@@ -109,7 +110,7 @@ export const Settings = () => {
             Appearance
           </h2>
 
-          <div className="bg-card rounded-xl p-4 shadow-soft">
+          <Card className="p-4">
             <div className="flex items-start gap-3">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
                 {theme === "dark" ? (
@@ -154,7 +155,7 @@ export const Settings = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </div>

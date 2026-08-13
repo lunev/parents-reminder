@@ -23,7 +23,7 @@ export const Home = () => {
     <>
       <HomeHeader />
       <Changelog entry={pendingEntry} onDismiss={dismiss} />
-      <div className="p-5 bg-gradient-soft flex flex-col gap-3">
+      <div className="p-5 bg-background flex flex-col gap-3">
         {children?.length ? (
           <>
             {children?.map((child) => (
