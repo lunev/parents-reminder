@@ -20,7 +20,6 @@ Chrome Extension (Manifest V3), "Parents Reminder" — school schedule alerts wi
 - `npm run lint` — `eslint .`
 - `npm run format` — `prettier --write .`
 - `npm run release` — builds, then zips `app/build` into `chrome-webstore/releases/<name>-v<version>.zip` (version/name read from `app/public/manifest.json`).
-- `npm run prev [version]` — restores a previous zip from `chrome-webstore/releases/` back into `app/build` (wipes `app/build` first). Omit the version to restore the most recently modified zip. **After running, reload the extension at `chrome://extensions` (click Refresh).**
 
 There is no test suite. CI (`.github/workflows/ci.yml`) runs typecheck, lint, build (and vitest, currently a no-op with no test files) on push/PR to `main`, all from `app/`.
 
