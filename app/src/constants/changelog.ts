@@ -2,6 +2,14 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.1.0",
+    date: "2026-08-13",
+    items: [
+      "Refreshed dark mode with new background, card, and text colors.",
+      "Fixed a lingering orange tint at the bottom of the home screen in dark mode.",
+    ],
+  },
+  {
     version: "3.0.3",
     date: "2026-08-11",
     items: [

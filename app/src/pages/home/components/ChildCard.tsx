@@ -2,6 +2,7 @@ import type { MouseEvent } from "react";
 import { useNavigate } from "react-router";
 import { AlarmClockOff, Bell, ChevronRight, Clock, ClockAlert } from "lucide-react";
 import type { Child } from "@/types";
+import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { isTimePassed } from "@/lib";
 import { format } from "date-fns";
@@ -35,8 +36,8 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
   );
 
   return (
-    <div
-      className="group bg-card rounded-xl p-4 shadow-soft hover:shadow-card transition-all duration-200 cursor-pointer animate-fade-in"
+    <Card
+      className="group p-4 hover:shadow-card transition-all duration-200 cursor-pointer animate-fade-in"
       onClick={() => navigate(`/edit/${child.id}`)}
     >
       <div className="flex items-center gap-3">
@@ -101,6 +102,6 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
           <ChevronRight className="size-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
