@@ -17,6 +17,7 @@ Chrome Extension (Manifest V3), "Parents Reminder" — school schedule alerts wi
 - `npm run dev` — Vite dev server.
 - `npm run build` — `tsc -b && vite build`, outputs to `app/build` (the unpacked-extension folder loaded via `chrome://extensions`).
 - `npm run watch` — dev-mode build with `--watch`.
+- **When iterating on changes you want to see live, start `npm run watch` (or `npm run dev` for UI-only work) in the background for the session** — don't rely on a one-off `npm run build` at the end, since its output goes stale the moment you make another edit.
 - `npm run lint` — `eslint .`
 - `npm run format` — `prettier --write .`
 - `npm run release` — builds, then zips `app/build` into `chrome-webstore/releases/<name>-v<version>.zip` (version/name read from `app/public/manifest.json`).
