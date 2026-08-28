@@ -4,7 +4,16 @@ import { useTheme, useSettings } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Bell, Monitor, Moon, Sun, UserX, Volume2 } from "lucide-react";
+import {
+  ArrowLeft,
+  Bell,
+  MessageCircleQuestion,
+  Monitor,
+  Moon,
+  Sun,
+  UserX,
+  Volume2,
+} from "lucide-react";
 
 export const Settings = () => {
   const { theme, setTheme } = useTheme();
@@ -14,18 +23,36 @@ export const Settings = () => {
 
   return (
     <div>
-      <header className="min-h-16.25 bg-card border-b border-border px-4 py-3 flex gap-3 items-center">
+      <header className="min-h-16.25 bg-card border-b border-border px-4 py-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="w-8 h-8 rounded-full hover:bg-accent"
+            asChild
+          >
+            <Link to={ROUTES.HOME}>
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
+          </Button>
+          <h1 className="text-base font-bold text-foreground capitalize">Settings</h1>
+        </div>
         <Button
           size="icon"
           variant="ghost"
           className="w-8 h-8 rounded-full hover:bg-accent"
+          title="Feedback"
+          aria-label="Feedback"
           asChild
         >
-          <Link to={ROUTES.HOME}>
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
+          <a
+            href="https://chromewebstore.google.com/detail/parents-reminder/honpenmjodkgcmmmiangohmegkobhmkh/support"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <MessageCircleQuestion className="w-5 h-5" />
+          </a>
         </Button>
-        <h1 className="text-base font-bold text-foreground capitalize">Settings</h1>
       </header>
       <div className="p-5 bg-background flex flex-col gap-5 max-h-100 overflow-auto scrollbar-hide">
         <div className="flex flex-col gap-3">

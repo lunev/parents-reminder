@@ -2,6 +2,13 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.2.0",
+    date: "2026-08-28",
+    items: [
+      "Added a dismissible corner prompt and a Feedback icon in Settings, both linking to the Chrome Web Store support page.",
+    ],
+  },
+  {
     version: "3.1.0",
     date: "2026-08-13",
     items: [
