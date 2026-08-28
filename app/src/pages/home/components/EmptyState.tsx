@@ -7,7 +7,7 @@ export const EmptyState = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center py-10">
+    <div className="flex flex-col items-center justify-center py-16">
       <div className="relative mb-6">
         <div className="w-24 h-24 rounded-full bg-muted flex items-center justify-center">
           <Bell className="w-10 h-10 text-muted-foreground" />
