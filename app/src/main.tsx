@@ -10,7 +10,7 @@ import "./assets/css/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+    <ThemeProvider>
       <HashRouter>
         <Routes>
           <Route index element={<Home />} />

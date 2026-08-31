@@ -1,5 +1,4 @@
 import { AppConfig } from "@/config";
-import { DEFAULT_SETTINGS } from "@/constants";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
 import { storage } from "@/lib";
 import { type Settings, type Child } from "@/types";
@@ -76,7 +75,7 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
   chrome.action.setBadgeBackgroundColor({ color: "#39BAFF" });
 
   // System Notification
-  if (settings?.systemNotifications) {
+  if (settings?.systemNotifications ?? true) {
     chrome.notifications.create(child.id, {
       type: "basic",
       iconUrl: child.photo || "icons/logo128x128.png",
@@ -87,15 +86,11 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
   }
 
   // Voice Notification
-  if (settings?.voiceNotifications) {
+  if (settings?.voiceNotifications ?? true) {
     chrome.tts.speak(`${AppConfig.name}: ${!settings?.anonymousMode ? child.name : ""}`, {
-      lang: "en-US",
+      lang: AppConfig.language,
       enqueue: true,
       rate: 0.9,
     });
   }
-};
-
-export const initSettings = async () => {
-  await storage.set(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS);
 };

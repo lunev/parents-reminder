@@ -2,6 +2,14 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.3.0",
+    date: "2026-08-31",
+    items: [
+      "Fixed settings sometimes resetting to defaults after an update.",
+      "Theme now always follows your system automatically; removed the manual light/dark toggle.",
+    ],
+  },
+  {
     version: "3.2.0",
     date: "2026-08-28",
     items: [

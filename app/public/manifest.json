@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Parents Reminder",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Smart school schedule alerts with voice notifications to keep your child's day organized.",
   "action": {
     "default_popup": "index.html",

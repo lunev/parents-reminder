@@ -1,22 +1,12 @@
 import { Link } from "react-router";
 import { ROUTES } from "@/config";
-import { useTheme, useSettings } from "@/hooks";
+import { useSettings } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import {
-  ArrowLeft,
-  Bell,
-  MessageCircleQuestion,
-  Monitor,
-  Moon,
-  Sun,
-  UserX,
-  Volume2,
-} from "lucide-react";
+import { ArrowLeft, Bell, MessageCircleQuestion, UserX, Volume2 } from "lucide-react";
 
 export const Settings = () => {
-  const { theme, setTheme } = useTheme();
   const { settings, setSettings, isLoading } = useSettings();
 
   if (isLoading) return null;
@@ -126,60 +116,6 @@ export const Settings = () => {
                   Hide child names in notifications, badges, and voice alerts to protect privacy in
                   public places
                 </p>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Appearance Section */}
-        <div className="flex flex-col gap-3">
-          <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-            Appearance
-          </h2>
-
-          <Card className="p-4">
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-                {theme === "dark" ? (
-                  <Moon className="w-4 h-4 text-accent-foreground" />
-                ) : (
-                  <Sun className="w-4 h-4 text-accent-foreground" />
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-foreground text-sm mb-2">Theme</h3>
-                <div className="flex gap-2">
-                  <Button
-                    type="button"
-                    variant={theme === "light" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setTheme("light")}
-                    className="flex-1 gap-1.5"
-                  >
-                    <Sun className="w-3.5 h-3.5" />
-                    Light
-                  </Button>
-                  <Button
-                    type="button"
-                    variant={theme === "dark" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setTheme("dark")}
-                    className="flex-1 gap-1.5"
-                  >
-                    <Moon className="w-3.5 h-3.5" />
-                    Dark
-                  </Button>
-                  <Button
-                    type="button"
-                    variant={theme === "system" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setTheme("system")}
-                    className="flex-1 gap-1.5"
-                  >
-                    <Monitor className="w-3.5 h-3.5" />
-                    Auto
-                  </Button>
-                </div>
               </div>
             </div>
           </Card>
