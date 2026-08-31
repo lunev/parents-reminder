@@ -1,52 +1,25 @@
-import { ThemeProviderContext, type Theme } from "@/context/theme-context";
-import { storage } from "@/lib";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
-  defaultTheme?: Theme;
-  storageKey?: string;
 };
 
-export function ThemeProvider({
-  children,
-  defaultTheme = "system",
-  storageKey = "vite-ui-theme",
-}: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
-
-  useEffect(() => {
-    const loadTheme = async () => {
-      const savedTheme = await storage.get<Theme>(storageKey);
-      if (savedTheme) {
-        setTheme(savedTheme);
-      }
-    };
-    loadTheme();
-  }, [storageKey]);
-
+export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove("light", "dark");
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-      root.classList.add(systemTheme);
-      return;
-    }
+    const applyTheme = (isDark: boolean) => {
+      root.classList.toggle("dark", isDark);
+      root.classList.toggle("light", !isDark);
+    };
 
-    root.classList.add(theme);
-  }, [theme]);
+    applyTheme(media.matches);
 
-  const value = {
-    theme,
-    setTheme: (newTheme: Theme) => {
-      storage.set(storageKey, newTheme);
-      setTheme(newTheme);
-    },
-  };
+    const handleChange = (e: MediaQueryListEvent) => applyTheme(e.matches);
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, []);
 
-  return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
+  return children;
 }
