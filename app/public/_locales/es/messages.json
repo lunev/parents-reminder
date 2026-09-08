@@ -1,0 +1,67 @@
+{
+  "extName": { "message": "Parents Reminder – Recogida escolar y avisos de horario" },
+  "extDescription": {
+    "message": "No te pierdas la recogida escolar. Avisos de escritorio y voz para el horario y las rutinas de tus hijos."
+  },
+  "appName": { "message": "Parents Reminder" },
+  "homeEmptyTitle": { "message": "Aún no hay recordatorios" },
+  "homeEmptyDescription": {
+    "message": "Añade a tu primer hijo/a para empezar a recibir recordatorios útiles de recogida"
+  },
+  "addChild": { "message": "Añadir hijo/a" },
+  "childCardNotScheduled": { "message": "Sin horario" },
+  "childCardPaused": { "message": "En pausa" },
+  "changelogWhatsNew": { "message": "Novedades de la v$1" },
+  "childAddTitle": { "message": "Añadir hijo/a" },
+  "childEditTitle": { "message": "Editar hijo/a" },
+  "childNotFound": { "message": "No se encontró al hijo/a" },
+  "goBack": { "message": "Volver" },
+  "confirmSure": { "message": "¿Seguro?" },
+  "nameLabel": { "message": "Nombre" },
+  "namePlaceholder": { "message": "Nombre del hijo/a" },
+  "scheduleByDay": { "message": "Horario por día" },
+  "earlyReminderLabel": { "message": "Recordatorio anticipado" },
+  "remindMeLabel": { "message": "Avisarme" },
+  "minBefore": { "message": "min antes" },
+  "cancel": { "message": "Cancelar" },
+  "save": { "message": "Guardar" },
+  "weekdayMonday": { "message": "Lunes" },
+  "weekdayTuesday": { "message": "Martes" },
+  "weekdayWednesday": { "message": "Miércoles" },
+  "weekdayThursday": { "message": "Jueves" },
+  "weekdayFriday": { "message": "Viernes" },
+  "weekdaySaturday": { "message": "Sábado" },
+  "weekdaySunday": { "message": "Domingo" },
+  "notesPlaceholder": { "message": "Notas para el $1..." },
+  "photoLabel": { "message": "Foto" },
+  "removePhoto": { "message": "Quitar foto" },
+  "photoLoadFailed": { "message": "No se pudo cargar la foto" },
+  "settingsTitle": { "message": "Ajustes" },
+  "feedback": { "message": "Comentarios" },
+  "notificationsSection": { "message": "Notificaciones" },
+  "voiceNotifTitle": { "message": "Notificaciones de voz" },
+  "voiceNotifDescription": {
+    "message": "Activa las notificaciones de voz para anunciar los recordatorios en voz alta"
+  },
+  "systemNotifTitle": { "message": "Notificaciones del sistema" },
+  "systemNotifDescription": {
+    "message": "Recibe recordatorios mejorados visualmente en la bandeja del sistema"
+  },
+  "anonymousModeTitle": { "message": "Modo anónimo" },
+  "anonymousModeDescription": {
+    "message": "Oculta los nombres de los hijos en notificaciones, insignias y avisos de voz para proteger la privacidad en lugares públicos"
+  },
+  "notFoundTitle": { "message": "Página no encontrada" },
+  "backHome": { "message": "Volver al inicio" },
+  "dismiss": { "message": "Cerrar" },
+  "supportMsg1": { "message": "¿Tienes una pregunta?" },
+  "supportMsg2": { "message": "¿Tienes una sugerencia para nosotros?" },
+  "supportMsg3": { "message": "¿Encontraste un problema o error?" },
+  "supportLinkText": { "message": "Obtén ayuda aquí" },
+  "notificationMessage": { "message": "$1, $2" },
+  "ttsAnnouncement": { "message": "Recordatorio: $1" },
+  "ttsAnnouncementAnonymous": { "message": "Es hora del recordatorio" },
+  "changelog340Localization": {
+    "message": "Se agregó compatibilidad con español, polaco, francés, alemán y ucraniano: la app, las notificaciones y los avisos de voz ahora siguen el idioma de tu navegador automáticamente."
+  }
+}

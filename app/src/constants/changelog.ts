@@ -2,6 +2,11 @@ import type { ChangelogEntry } from "@/types";
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.4.0",
+    date: "2026-09-08",
+    items: ["changelog340Localization"],
+  },
+  {
     version: "3.3.0",
     date: "2026-08-31",
     items: [

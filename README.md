@@ -62,6 +62,9 @@ Google Chrome on Windows and Mac.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 3.4.0 - 2026-09-08
+- Added Spanish, Polish, French, German, and Ukrainian support — the app, desktop notifications, and voice reminders now automatically follow your browser's language.
+
 ### 3.3.0 - 2026-08-31
 - Fixed a bug where your notification and privacy settings could silently reset to their defaults after the extension updated.
 - Removed the manual light/dark theme toggle; the extension now always follows your system's theme automatically, including live updates if you change it while the popup is open.

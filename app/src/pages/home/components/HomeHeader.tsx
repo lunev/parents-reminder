@@ -1,7 +1,8 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Plus, Settings } from "lucide-react";
-import { AppConfig, ROUTES } from "@/config";
+import { ROUTES } from "@/config";
+import { t } from "@/lib";
 import logo from "@/assets/images/logo128x128.png";
 import { CurrentDateTime } from "./CurrentDateTime";
 
@@ -12,9 +13,7 @@ export const HomeHeader: React.FC = () => {
       <div className="flex gap-2.5 flex-1 items-center">
         <img src={logo} width={32} height={32} alt="logo" />
         <div className="flex flex-col">
-          <h1 className="text-base font-bold text-foreground capitalize flex-1">
-            {AppConfig.name}
-          </h1>
+          <h1 className="text-base font-bold text-foreground capitalize flex-1">{t("appName")}</h1>
           <div className="flex gap-1">
             <CurrentDateTime />
           </div>

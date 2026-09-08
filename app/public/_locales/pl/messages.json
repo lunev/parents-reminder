@@ -1,0 +1,67 @@
+{
+  "extName": { "message": "Parents Reminder – Odbiór ze szkoły i plan dnia" },
+  "extDescription": {
+    "message": "Nie przegap odbioru ze szkoły. Przypomnienia głosowe i na pulpicie o planie dnia i zajęciach dziecka."
+  },
+  "appName": { "message": "Parents Reminder" },
+  "homeEmptyTitle": { "message": "Brak przypomnień" },
+  "homeEmptyDescription": {
+    "message": "Dodaj pierwsze dziecko, aby otrzymywać przydatne przypomnienia o odbiorze"
+  },
+  "addChild": { "message": "Dodaj dziecko" },
+  "childCardNotScheduled": { "message": "Brak planu" },
+  "childCardPaused": { "message": "Wstrzymano" },
+  "changelogWhatsNew": { "message": "Nowości w wersji $1" },
+  "childAddTitle": { "message": "Dodaj dziecko" },
+  "childEditTitle": { "message": "Edytuj dziecko" },
+  "childNotFound": { "message": "Nie znaleziono dziecka" },
+  "goBack": { "message": "Wróć" },
+  "confirmSure": { "message": "Na pewno?" },
+  "nameLabel": { "message": "Imię" },
+  "namePlaceholder": { "message": "Imię dziecka" },
+  "scheduleByDay": { "message": "Plan według dni" },
+  "earlyReminderLabel": { "message": "Wcześniejsze przypomnienie" },
+  "remindMeLabel": { "message": "Przypomnij mi" },
+  "minBefore": { "message": "min wcześniej" },
+  "cancel": { "message": "Anuluj" },
+  "save": { "message": "Zapisz" },
+  "weekdayMonday": { "message": "Poniedziałek" },
+  "weekdayTuesday": { "message": "Wtorek" },
+  "weekdayWednesday": { "message": "Środa" },
+  "weekdayThursday": { "message": "Czwartek" },
+  "weekdayFriday": { "message": "Piątek" },
+  "weekdaySaturday": { "message": "Sobota" },
+  "weekdaySunday": { "message": "Niedziela" },
+  "notesPlaceholder": { "message": "Notatki – $1..." },
+  "photoLabel": { "message": "Zdjęcie" },
+  "removePhoto": { "message": "Usuń zdjęcie" },
+  "photoLoadFailed": { "message": "Nie udało się wczytać zdjęcia" },
+  "settingsTitle": { "message": "Ustawienia" },
+  "feedback": { "message": "Opinie" },
+  "notificationsSection": { "message": "Powiadomienia" },
+  "voiceNotifTitle": { "message": "Powiadomienia głosowe" },
+  "voiceNotifDescription": {
+    "message": "Włącz powiadomienia głosowe, aby przypomnienia były odczytywane na głos"
+  },
+  "systemNotifTitle": { "message": "Powiadomienia systemowe" },
+  "systemNotifDescription": {
+    "message": "Otrzymuj rozszerzone wizualnie przypomnienia na pasku systemowym"
+  },
+  "anonymousModeTitle": { "message": "Tryb anonimowy" },
+  "anonymousModeDescription": {
+    "message": "Ukrywa imiona dzieci w powiadomieniach, odznakach i komunikatach głosowych, aby chronić prywatność w miejscach publicznych"
+  },
+  "notFoundTitle": { "message": "Nie znaleziono strony" },
+  "backHome": { "message": "Wróć do strony głównej" },
+  "dismiss": { "message": "Zamknij" },
+  "supportMsg1": { "message": "Masz pytanie?" },
+  "supportMsg2": { "message": "Masz sugestię dla nas?" },
+  "supportMsg3": { "message": "Napotkałeś problem lub błąd?" },
+  "supportLinkText": { "message": "Uzyskaj pomoc tutaj" },
+  "notificationMessage": { "message": "$1, $2" },
+  "ttsAnnouncement": { "message": "Przypomnienie: $1" },
+  "ttsAnnouncementAnonymous": { "message": "Czas na przypomnienie" },
+  "changelog340Localization": {
+    "message": "Dodano obsługę języka hiszpańskiego, polskiego, francuskiego, niemieckiego i ukraińskiego — aplikacja, powiadomienia i głosowe przypomnienia dopasowują się teraz automatycznie do języka przeglądarki."
+  }
+}

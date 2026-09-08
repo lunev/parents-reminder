@@ -1,0 +1,206 @@
+{
+  "extName": {
+    "message": "Parents Reminder – School Pickup & Schedule Alerts",
+    "description": "Extension name shown in the Chrome Web Store and chrome://extensions"
+  },
+  "extDescription": {
+    "message": "Never miss school pickup or drop-off. Desktop and voice reminders for your kids' daily schedule, activities, and routines.",
+    "description": "Extension short description shown in the Chrome Web Store"
+  },
+  "appName": {
+    "message": "Parents Reminder",
+    "description": "Brand name, shown in the toolbar tooltip, app header, and notification title"
+  },
+  "homeEmptyTitle": {
+    "message": "No reminders yet",
+    "description": "Home screen empty-state heading"
+  },
+  "homeEmptyDescription": {
+    "message": "Add your first child to start receiving helpful pickup reminders",
+    "description": "Home screen empty-state description"
+  },
+  "addChild": {
+    "message": "Add child",
+    "description": "Button on the home screen empty state"
+  },
+  "childCardNotScheduled": {
+    "message": "Not Scheduled",
+    "description": "Shown on a child card when today has no schedule entry"
+  },
+  "childCardPaused": {
+    "message": "Paused",
+    "description": "Shown on a child card when the child is disabled"
+  },
+  "changelogWhatsNew": {
+    "message": "What's new in v$1",
+    "description": "Changelog card heading",
+    "placeholders": {
+      "1": { "content": "$1", "example": "3.3.0" }
+    }
+  },
+  "childAddTitle": {
+    "message": "Add Child",
+    "description": "Header title on the Add Child screen"
+  },
+  "childEditTitle": {
+    "message": "Edit Child",
+    "description": "Header title on the Edit Child screen"
+  },
+  "childNotFound": {
+    "message": "Child was not found",
+    "description": "Shown when editing a child id that no longer exists"
+  },
+  "goBack": {
+    "message": "Go Back",
+    "description": "Button to return home from the child-not-found screen"
+  },
+  "confirmSure": {
+    "message": "Sure?",
+    "description": "Inline delete confirmation label"
+  },
+  "nameLabel": {
+    "message": "Name",
+    "description": "Child form field label"
+  },
+  "namePlaceholder": {
+    "message": "Child's name",
+    "description": "Child form name input placeholder"
+  },
+  "scheduleByDay": {
+    "message": "Schedule by Day",
+    "description": "Child form section label"
+  },
+  "earlyReminderLabel": {
+    "message": "Early Reminder",
+    "description": "Child form section label"
+  },
+  "remindMeLabel": {
+    "message": "Remind me",
+    "description": "Early reminder toggle label"
+  },
+  "minBefore": {
+    "message": "min before",
+    "description": "Suffix after the early-reminder minutes input"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Child form cancel button"
+  },
+  "save": {
+    "message": "Save",
+    "description": "Child form save button"
+  },
+  "weekdayMonday": { "message": "Monday", "description": "Weekday display label" },
+  "weekdayTuesday": { "message": "Tuesday", "description": "Weekday display label" },
+  "weekdayWednesday": { "message": "Wednesday", "description": "Weekday display label" },
+  "weekdayThursday": { "message": "Thursday", "description": "Weekday display label" },
+  "weekdayFriday": { "message": "Friday", "description": "Weekday display label" },
+  "weekdaySaturday": { "message": "Saturday", "description": "Weekday display label" },
+  "weekdaySunday": { "message": "Sunday", "description": "Weekday display label" },
+  "notesPlaceholder": {
+    "message": "Notes for $1...",
+    "description": "Schedule notes textarea placeholder",
+    "placeholders": {
+      "1": { "content": "$1", "example": "Monday" }
+    }
+  },
+  "photoLabel": {
+    "message": "Photo",
+    "description": "Empty photo-field placeholder label"
+  },
+  "removePhoto": {
+    "message": "Remove photo",
+    "description": "Title/aria-label on the remove-photo button"
+  },
+  "photoLoadFailed": {
+    "message": "Failed to load a photo",
+    "description": "Toast error when a selected photo fails to compress/load"
+  },
+  "settingsTitle": {
+    "message": "Settings",
+    "description": "Settings screen header title"
+  },
+  "feedback": {
+    "message": "Feedback",
+    "description": "Title/aria-label on the settings feedback button"
+  },
+  "notificationsSection": {
+    "message": "Notifications",
+    "description": "Settings screen section heading"
+  },
+  "voiceNotifTitle": {
+    "message": "Voice notifications",
+    "description": "Settings toggle title"
+  },
+  "voiceNotifDescription": {
+    "message": "Enable voice notifications to announce reminders aloud",
+    "description": "Settings toggle description"
+  },
+  "systemNotifTitle": {
+    "message": "System notifications",
+    "description": "Settings toggle title"
+  },
+  "systemNotifDescription": {
+    "message": "Receive visually enhanced reminders in your system tray",
+    "description": "Settings toggle description"
+  },
+  "anonymousModeTitle": {
+    "message": "Anonymous mode",
+    "description": "Settings toggle title"
+  },
+  "anonymousModeDescription": {
+    "message": "Hide child names in notifications, badges, and voice alerts to protect privacy in public places",
+    "description": "Settings toggle description"
+  },
+  "notFoundTitle": {
+    "message": "Page not found",
+    "description": "404 page heading"
+  },
+  "backHome": {
+    "message": "Back Home",
+    "description": "404 page link"
+  },
+  "dismiss": {
+    "message": "Dismiss",
+    "description": "Title/aria-label on the floating popup's close button"
+  },
+  "supportMsg1": {
+    "message": "Have a question?",
+    "description": "Support popup rotating message"
+  },
+  "supportMsg2": {
+    "message": "Got a suggestion for us?",
+    "description": "Support popup rotating message"
+  },
+  "supportMsg3": {
+    "message": "Ran into a problem or bug?",
+    "description": "Support popup rotating message"
+  },
+  "supportLinkText": {
+    "message": "Get support here",
+    "description": "Support popup link text"
+  },
+  "notificationMessage": {
+    "message": "$1, $2",
+    "description": "Desktop notification body: child name, time",
+    "placeholders": {
+      "1": { "content": "$1", "example": "Alice" },
+      "2": { "content": "$2", "example": "08:00" }
+    }
+  },
+  "ttsAnnouncement": {
+    "message": "Parents Reminder: $1",
+    "description": "Spoken TTS phrase (non-anonymous mode). English keeps the brand name since it's spoken natively; other locales omit it to avoid an accented mispronunciation.",
+    "placeholders": {
+      "1": { "content": "$1", "example": "Alice" }
+    }
+  },
+  "ttsAnnouncementAnonymous": {
+    "message": "It's reminder time",
+    "description": "Spoken TTS phrase in anonymous mode (no child name)"
+  },
+  "changelog340Localization": {
+    "message": "Added support for Spanish, Polish, French, German, and Ukrainian — the app, notifications, and voice reminders now follow your browser's language automatically.",
+    "description": "v3.4.0 changelog item"
+  }
+}

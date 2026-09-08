@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { Bell, Plus, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/config/routes";
+import { t } from "@/lib";
 
 export const EmptyState = () => {
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ export const EmptyState = () => {
           <Heart className="w-4 h-4 text-primary-foreground fill-primary-foreground" />
         </div>
       </div>
-      <h3 className="text-lg font-semibold text-foreground mb-2">No reminders yet</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-2">{t("homeEmptyTitle")}</h3>
       <p className="text-sm text-muted-foreground text-center mb-6 max-w-60">
-        Add your first child to start receiving helpful pickup reminders
+        {t("homeEmptyDescription")}
       </p>
       <Button
         size="lg"
@@ -26,7 +27,7 @@ export const EmptyState = () => {
         onClick={() => navigate(ROUTES.CHILD_ADD)}
       >
         <Plus className="w-4 h-4" />
-        Add child
+        {t("addChild")}
       </Button>
     </div>
   );

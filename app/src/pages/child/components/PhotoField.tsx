@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Camera, User, X } from "lucide-react";
-import { compressImage } from "@/lib";
+import { compressImage, t } from "@/lib";
 import { toast } from "sonner";
 
 interface PhotoFieldProps {
@@ -22,7 +22,7 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
           onChange(base64Photo);
         }
       } catch {
-        toast.error("Failed to load a photo");
+        toast.error(t("photoLoadFailed"));
       } finally {
         if (photoRef.current) photoRef.current.value = "";
       }
@@ -57,9 +57,13 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
               type="button"
               onClick={handleRemovePhoto}
               className="absolute -top-1 -right-1 z-10 bg-destructive text-background rounded-full p-1 shadow-md hover:scale-110 active:scale-95 transition-all cursor-pointer"
-              title="Remove photo"
+              title={t("removePhoto")}
             >
-              {confirmingDelete ? <span className="text-[10px]">Sure?</span> : <X size={12} />}
+              {confirmingDelete ? (
+                <span className="text-[10px]">{t("confirmSure")}</span>
+              ) : (
+                <X size={12} />
+              )}
             </button>
           </>
         )}
@@ -83,7 +87,7 @@ export const PhotoFied: React.FC<PhotoFieldProps> = ({ photo, onChange }) => {
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground">
               <User className="w-8 h-8 mb-1" />
-              <span className="text-[10px] font-bold uppercase">Photo</span>
+              <span className="text-[10px] font-bold uppercase">{t("photoLabel")}</span>
             </div>
           )}
         </div>

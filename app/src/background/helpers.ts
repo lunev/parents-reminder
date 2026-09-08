@@ -1,6 +1,6 @@
-import { AppConfig } from "@/config";
+import { getTtsLang } from "@/constants";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
-import { storage } from "@/lib";
+import { storage, t } from "@/lib";
 import { type Settings, type Child } from "@/types";
 import { subMinutes, parse, format } from "date-fns";
 
@@ -79,16 +79,23 @@ const sendNotification = async (child: Child, time: string, settings: Settings |
     chrome.notifications.create(child.id, {
       type: "basic",
       iconUrl: child.photo || "icons/logo128x128.png",
-      title: AppConfig.name,
-      message: `${child.name}, ${time}`,
+      title: t("appName"),
+      message: t("notificationMessage", [child.name, time]),
       priority: 2,
     });
   }
 
   // Voice Notification
   if (settings?.voiceNotifications ?? true) {
-    chrome.tts.speak(`${AppConfig.name}: ${!settings?.anonymousMode ? child.name : ""}`, {
-      lang: AppConfig.language,
+    // The English catalog's ttsAnnouncement keeps the brand name ("Parents Reminder: $1")
+    // since it's spoken natively there; other locales omit it in their translation to
+    // avoid a non-English voice mispronouncing the English brand name.
+    const phrase = !settings?.anonymousMode
+      ? t("ttsAnnouncement", [child.name])
+      : t("ttsAnnouncementAnonymous");
+
+    chrome.tts.speak(phrase, {
+      lang: getTtsLang(),
       enqueue: true,
       rate: 0.9,
     });

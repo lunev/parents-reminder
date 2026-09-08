@@ -1,0 +1,67 @@
+{
+  "extName": { "message": "Parents Reminder – Abholzeiten & Stundenplan-Erinnerungen" },
+  "extDescription": {
+    "message": "Verpasse nie wieder die Abholzeit. Erinnerungen auf dem Desktop und per Sprachausgabe für den Tagesablauf deiner Kinder."
+  },
+  "appName": { "message": "Parents Reminder" },
+  "homeEmptyTitle": { "message": "Noch keine Erinnerungen" },
+  "homeEmptyDescription": {
+    "message": "Füge dein erstes Kind hinzu, um hilfreiche Erinnerungen zum Abholen zu erhalten"
+  },
+  "addChild": { "message": "Kind hinzufügen" },
+  "childCardNotScheduled": { "message": "Nicht geplant" },
+  "childCardPaused": { "message": "Pausiert" },
+  "changelogWhatsNew": { "message": "Neu in v$1" },
+  "childAddTitle": { "message": "Kind hinzufügen" },
+  "childEditTitle": { "message": "Kind bearbeiten" },
+  "childNotFound": { "message": "Kind wurde nicht gefunden" },
+  "goBack": { "message": "Zurück" },
+  "confirmSure": { "message": "Sicher?" },
+  "nameLabel": { "message": "Name" },
+  "namePlaceholder": { "message": "Name des Kindes" },
+  "scheduleByDay": { "message": "Zeitplan nach Tag" },
+  "earlyReminderLabel": { "message": "Frühere Erinnerung" },
+  "remindMeLabel": { "message": "Erinnere mich" },
+  "minBefore": { "message": "Min. vorher" },
+  "cancel": { "message": "Abbrechen" },
+  "save": { "message": "Speichern" },
+  "weekdayMonday": { "message": "Montag" },
+  "weekdayTuesday": { "message": "Dienstag" },
+  "weekdayWednesday": { "message": "Mittwoch" },
+  "weekdayThursday": { "message": "Donnerstag" },
+  "weekdayFriday": { "message": "Freitag" },
+  "weekdaySaturday": { "message": "Samstag" },
+  "weekdaySunday": { "message": "Sonntag" },
+  "notesPlaceholder": { "message": "Notizen für $1..." },
+  "photoLabel": { "message": "Foto" },
+  "removePhoto": { "message": "Foto entfernen" },
+  "photoLoadFailed": { "message": "Foto konnte nicht geladen werden" },
+  "settingsTitle": { "message": "Einstellungen" },
+  "feedback": { "message": "Feedback" },
+  "notificationsSection": { "message": "Benachrichtigungen" },
+  "voiceNotifTitle": { "message": "Sprachbenachrichtigungen" },
+  "voiceNotifDescription": {
+    "message": "Aktiviere Sprachbenachrichtigungen, um Erinnerungen laut anzusagen"
+  },
+  "systemNotifTitle": { "message": "Systembenachrichtigungen" },
+  "systemNotifDescription": {
+    "message": "Erhalte optisch hervorgehobene Erinnerungen in der Benachrichtigungsleiste"
+  },
+  "anonymousModeTitle": { "message": "Anonymer Modus" },
+  "anonymousModeDescription": {
+    "message": "Blendet Kindernamen in Benachrichtigungen, Badges und Sprachhinweisen aus, um die Privatsphäre an öffentlichen Orten zu schützen"
+  },
+  "notFoundTitle": { "message": "Seite nicht gefunden" },
+  "backHome": { "message": "Zurück zur Startseite" },
+  "dismiss": { "message": "Schließen" },
+  "supportMsg1": { "message": "Hast du eine Frage?" },
+  "supportMsg2": { "message": "Hast du einen Vorschlag für uns?" },
+  "supportMsg3": { "message": "Ist dir ein Problem oder Fehler aufgefallen?" },
+  "supportLinkText": { "message": "Hier Hilfe erhalten" },
+  "notificationMessage": { "message": "$1, $2" },
+  "ttsAnnouncement": { "message": "Erinnerung: $1" },
+  "ttsAnnouncementAnonymous": { "message": "Es ist Zeit für die Erinnerung" },
+  "changelog340Localization": {
+    "message": "Unterstützung für Spanisch, Polnisch, Französisch, Deutsch und Ukrainisch hinzugefügt – die App, Benachrichtigungen und Sprachansagen folgen jetzt automatisch der Sprache deines Browsers."
+  }
+}

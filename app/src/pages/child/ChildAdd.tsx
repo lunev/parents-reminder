@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { ROUTES } from "@/config";
 import { ChildForm } from "./components/ChildForm";
 import { Button } from "@/components/ui/button";
+import { t } from "@/lib";
 
 export const ChildAdd = () => {
   return (
@@ -18,7 +19,7 @@ export const ChildAdd = () => {
             <ArrowLeft className="w-5 h-5" />
           </Link>
         </Button>
-        <h1 className="text-base font-bold text-foreground capitalize">Add Child</h1>
+        <h1 className="text-base font-bold text-foreground capitalize">{t("childAddTitle")}</h1>
       </header>
       <div className="bg-background">
         <ChildForm />

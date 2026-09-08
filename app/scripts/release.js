@@ -16,7 +16,24 @@ if (!fs.existsSync(buildDir)) {
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
 
-const extensionName = (manifest.name ?? 'chrome-extension')
+const resolveManifestField = (value) => {
+  const msgMatch = /^__MSG_(\w+)__$/.exec(value ?? '');
+  if (!msgMatch) return value;
+
+  const defaultLocale = manifest.default_locale ?? 'en';
+  const messagesPath = path.resolve(
+    __dirname,
+    '..',
+    'public',
+    '_locales',
+    defaultLocale,
+    'messages.json',
+  );
+  const messages = JSON.parse(fs.readFileSync(messagesPath, 'utf-8'));
+  return messages[msgMatch[1]]?.message ?? value;
+};
+
+const extensionName = (resolveManifestField(manifest.name) ?? 'chrome-extension')
   .normalize('NFKD')
   .replace(/[\u0300-\u036f]/g, '') // strip accents
   .replace(/[^a-zA-Z0-9_-]+/g, '-') // replace unsafe characters with '-'
