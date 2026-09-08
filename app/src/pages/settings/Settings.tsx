@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { ArrowLeft, Bell, MessageCircleQuestion, UserX, Volume2 } from "lucide-react";
+import { t } from "@/lib";
 
 export const Settings = () => {
   const { settings, setSettings, isLoading } = useSettings();
@@ -25,14 +26,14 @@ export const Settings = () => {
               <ArrowLeft className="w-5 h-5" />
             </Link>
           </Button>
-          <h1 className="text-base font-bold text-foreground capitalize">Settings</h1>
+          <h1 className="text-base font-bold text-foreground capitalize">{t("settingsTitle")}</h1>
         </div>
         <Button
           size="icon"
           variant="ghost"
           className="w-8 h-8 rounded-full hover:bg-accent"
-          title="Feedback"
-          aria-label="Feedback"
+          title={t("feedback")}
+          aria-label={t("feedback")}
           asChild
         >
           <a
@@ -47,7 +48,7 @@ export const Settings = () => {
       <div className="p-5 bg-background flex flex-col gap-5 max-h-100 overflow-auto scrollbar-hide">
         <div className="flex flex-col gap-3">
           <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-            Notifications
+            {t("notificationsSection")}
           </h2>
 
           {/* Voice Notifications */}
@@ -58,7 +59,7 @@ export const Settings = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-medium text-foreground text-sm">Voice notifications</h3>
+                  <h3 className="font-medium text-foreground text-sm">{t("voiceNotifTitle")}</h3>
                   <Switch
                     checked={settings?.voiceNotifications ?? true}
                     onCheckedChange={(checked) =>
@@ -67,7 +68,7 @@ export const Settings = () => {
                   />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Enable voice notifications to announce reminders aloud
+                  {t("voiceNotifDescription")}
                 </p>
               </div>
             </div>
@@ -81,7 +82,7 @@ export const Settings = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-medium text-foreground text-sm">System notifications</h3>
+                  <h3 className="font-medium text-foreground text-sm">{t("systemNotifTitle")}</h3>
                   <Switch
                     checked={settings?.systemNotifications ?? true}
                     onCheckedChange={(checked) =>
@@ -90,7 +91,7 @@ export const Settings = () => {
                   />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Receive visually enhanced reminders in your system tray
+                  {t("systemNotifDescription")}
                 </p>
               </div>
             </div>
@@ -104,7 +105,9 @@ export const Settings = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-medium text-foreground text-sm">Anonymous mode</h3>
+                  <h3 className="font-medium text-foreground text-sm">
+                    {t("anonymousModeTitle")}
+                  </h3>
                   <Switch
                     checked={settings?.anonymousMode ?? false}
                     onCheckedChange={(checked) =>
@@ -113,8 +116,7 @@ export const Settings = () => {
                   />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Hide child names in notifications, badges, and voice alerts to protect privacy in
-                  public places
+                  {t("anonymousModeDescription")}
                 </p>
               </div>
             </div>

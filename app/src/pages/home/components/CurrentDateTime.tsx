@@ -17,11 +17,11 @@ export const CurrentDateTime: React.FC = () => {
       day: "numeric",
       month: "short",
     };
-    return currentTime.toLocaleDateString("en-US", options);
+    return currentTime.toLocaleDateString(undefined, options);
   };
 
   const formatTime = () => {
-    return currentTime.toLocaleTimeString("en-US", {
+    return currentTime.toLocaleTimeString(undefined, {
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,

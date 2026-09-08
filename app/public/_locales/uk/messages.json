@@ -1,0 +1,67 @@
+{
+  "extName": { "message": "Parents Reminder – Забирання зі школи та розклад" },
+  "extDescription": {
+    "message": "Не пропускайте забирання дитини зі школи. Нагадування на екрані та голосом про розклад і справи ваших дітей."
+  },
+  "appName": { "message": "Parents Reminder" },
+  "homeEmptyTitle": { "message": "Поки що немає нагадувань" },
+  "homeEmptyDescription": {
+    "message": "Додайте першу дитину, щоб отримувати корисні нагадування про забирання"
+  },
+  "addChild": { "message": "Додати дитину" },
+  "childCardNotScheduled": { "message": "Розклад не задано" },
+  "childCardPaused": { "message": "На паузі" },
+  "changelogWhatsNew": { "message": "Що нового у версії $1" },
+  "childAddTitle": { "message": "Додати дитину" },
+  "childEditTitle": { "message": "Редагувати дитину" },
+  "childNotFound": { "message": "Дитину не знайдено" },
+  "goBack": { "message": "Назад" },
+  "confirmSure": { "message": "Точно?" },
+  "nameLabel": { "message": "Ім'я" },
+  "namePlaceholder": { "message": "Ім'я дитини" },
+  "scheduleByDay": { "message": "Розклад за днями" },
+  "earlyReminderLabel": { "message": "Раннє нагадування" },
+  "remindMeLabel": { "message": "Нагадати мені" },
+  "minBefore": { "message": "хв до" },
+  "cancel": { "message": "Скасувати" },
+  "save": { "message": "Зберегти" },
+  "weekdayMonday": { "message": "Понеділок" },
+  "weekdayTuesday": { "message": "Вівторок" },
+  "weekdayWednesday": { "message": "Середа" },
+  "weekdayThursday": { "message": "Четвер" },
+  "weekdayFriday": { "message": "П'ятниця" },
+  "weekdaySaturday": { "message": "Субота" },
+  "weekdaySunday": { "message": "Неділя" },
+  "notesPlaceholder": { "message": "Нотатки – $1..." },
+  "photoLabel": { "message": "Фото" },
+  "removePhoto": { "message": "Видалити фото" },
+  "photoLoadFailed": { "message": "Не вдалося завантажити фото" },
+  "settingsTitle": { "message": "Налаштування" },
+  "feedback": { "message": "Відгук" },
+  "notificationsSection": { "message": "Сповіщення" },
+  "voiceNotifTitle": { "message": "Голосові сповіщення" },
+  "voiceNotifDescription": {
+    "message": "Увімкніть голосові сповіщення, щоб нагадування озвучувалися вголос"
+  },
+  "systemNotifTitle": { "message": "Системні сповіщення" },
+  "systemNotifDescription": {
+    "message": "Отримуйте покращені візуальні нагадування в системному лотку"
+  },
+  "anonymousModeTitle": { "message": "Анонімний режим" },
+  "anonymousModeDescription": {
+    "message": "Приховує імена дітей у сповіщеннях, значках і голосових нагадуваннях для захисту приватності в публічних місцях"
+  },
+  "notFoundTitle": { "message": "Сторінку не знайдено" },
+  "backHome": { "message": "На головну" },
+  "dismiss": { "message": "Закрити" },
+  "supportMsg1": { "message": "Маєте запитання?" },
+  "supportMsg2": { "message": "Є пропозиція для нас?" },
+  "supportMsg3": { "message": "Зіткнулися з проблемою чи помилкою?" },
+  "supportLinkText": { "message": "Отримати підтримку тут" },
+  "notificationMessage": { "message": "$1, $2" },
+  "ttsAnnouncement": { "message": "Нагадування: $1" },
+  "ttsAnnouncementAnonymous": { "message": "Час нагадування" },
+  "changelog340Localization": {
+    "message": "Додано підтримку іспанської, польської, французької, німецької та української мов — застосунок, сповіщення та голосові нагадування тепер автоматично відповідають мові вашого браузера."
+  }
+}

@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { saveChild } from "./ChildForm.helpers";
+import { t } from "@/lib";
 
 interface ChildFormProps {
   child?: Child;
@@ -60,7 +61,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
         {/* Name */}
         <div className="flex flex-col gap-3">
           <Label htmlFor="title" className="font-medium">
-            Name
+            {t("nameLabel")}
           </Label>
           <Input
             required
@@ -68,14 +69,14 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
             type="text"
             maxLength={30}
             value={formData.name}
-            placeholder="Child's name"
+            placeholder={t("namePlaceholder")}
             onChange={(e) => setFormData({ ...formData, name: e.currentTarget.value })}
           />
         </div>
 
         {/* Schedule by Day */}
         <div className="flex flex-col gap-3">
-          <Label>Schedule by Day</Label>
+          <Label>{t("scheduleByDay")}</Label>
           <div className="flex flex-col gap-2">
             {formData.schedule.map((schedule) => (
               <ScheduleField
@@ -96,7 +97,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
 
         {/* Early Reminder */}
         <div className="flex flex-col gap-3">
-          <Label htmlFor="early-reminder">Early Reminder</Label>
+          <Label htmlFor="early-reminder">{t("earlyReminderLabel")}</Label>
           <Card className="p-3 flex gap-3 items-center">
             <Switch
               checked={formData.earlyReminder.enabled}
@@ -111,7 +112,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
               }}
             />
             <Label htmlFor="remind-me" className="min-w-20 flex-1">
-              Remind me
+              {t("remindMeLabel")}
             </Label>
             <Input
               required
@@ -127,7 +128,7 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
                 });
               }}
             />
-            <span className="text-sm text-muted-foreground text-nowrap">min before</span>
+            <span className="text-sm text-muted-foreground text-nowrap">{t("minBefore")}</span>
           </Card>
         </div>
       </div>
@@ -135,10 +136,10 @@ export const ChildForm: React.FC<ChildFormProps> = ({ child }) => {
       {/* Buttons */}
       <div className="bg-card border-b border-border px-4 py-5 flex gap-3 items-center">
         <Button variant="outline" type="button" asChild className="flex-1">
-          <Link to={ROUTES.HOME}>Cancel</Link>
+          <Link to={ROUTES.HOME}>{t("cancel")}</Link>
         </Button>
         <Button type="submit" className="flex-1">
-          Save
+          {t("save")}
         </Button>
       </div>
     </form>

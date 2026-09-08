@@ -4,7 +4,7 @@ import { AlarmClockOff, Bell, ChevronRight, Clock, ClockAlert } from "lucide-rea
 import type { Child } from "@/types";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { isTimePassed } from "@/lib";
+import { isTimePassed, t } from "@/lib";
 import { format } from "date-fns";
 import { updateChildStatus } from "./ChildCard.helpers";
 import { useSettings } from "@/hooks";
@@ -79,12 +79,12 @@ export const ChildCard: React.FC<ChildCardProps> = ({ child, onToggle }) => {
             {child.enabled ? (
               <>
                 {scheduleClockIcon}
-                <span>{todaySchedule?.time || "Not Scheduled"}</span>
+                <span>{todaySchedule?.time || t("childCardNotScheduled")}</span>
               </>
             ) : (
               <>
                 <ClockAlert className="size-3.5" />
-                <span>Paused</span>
+                <span>{t("childCardPaused")}</span>
               </>
             )}
           </div>

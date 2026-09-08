@@ -8,6 +8,7 @@ import { useChildren } from "@/hooks";
 import { storage } from "@/lib";
 import { STORAGE_KEYS } from "@/constants/storage_keys";
 import { updateBadgeText } from "@/lib/badge";
+import { t } from "@/lib";
 
 export const ChildEdit = () => {
   const navigate = useNavigate();
@@ -37,9 +38,9 @@ export const ChildEdit = () => {
   if (!child) {
     return (
       <div className="p-5 text-center">
-        <p className="mb-4">Child was not found</p>
+        <p className="mb-4">{t("childNotFound")}</p>
         <Button asChild variant="outline">
-          <Link to={ROUTES.HOME}>Go Back</Link>
+          <Link to={ROUTES.HOME}>{t("goBack")}</Link>
         </Button>
       </div>
     );
@@ -58,7 +59,7 @@ export const ChildEdit = () => {
             <ArrowLeft className="w-5 h-5" />
           </Link>
         </Button>
-        <h1 className="text-base font-bold text-foreground capitalize">Edit Child</h1>
+        <h1 className="text-base font-bold text-foreground capitalize">{t("childEditTitle")}</h1>
         <Button
           size={confirmingDelete ? "sm" : "icon"}
           variant="ghost"
@@ -70,7 +71,7 @@ export const ChildEdit = () => {
           }`}
         >
           {confirmingDelete ? (
-            <span className="text-xs font-medium">Sure?</span>
+            <span className="text-xs font-medium">{t("confirmSure")}</span>
           ) : (
             <Trash2 className="w-4 h-4" />
           )}

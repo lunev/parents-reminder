@@ -7,6 +7,7 @@ import type { Schedule } from "@/types";
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { getWeekdayLabel, t } from "@/lib";
 
 interface ScheduleFieldProps {
   schedule: Schedule;
@@ -17,7 +18,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
   const [notesOpen, setNotesOpen] = useState<boolean>();
   const { day, time, enabled, notes } = schedule;
   const hasNotes = notes && notes.trim().length > 0;
-  const capitalizedDay = day.charAt(0).toUpperCase() + day.slice(1);
+  const weekdayLabel = getWeekdayLabel(day);
 
   return (
     <Card className="p-3">
@@ -26,8 +27,8 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
           checked={enabled}
           onCheckedChange={(enabled) => onChange({ ...schedule, enabled })}
         />
-        <Label htmlFor={day} className="min-w-20 flex-1 capitalize">
-          {day}
+        <Label htmlFor={day} className="min-w-20 flex-1">
+          {weekdayLabel}
         </Label>
         <Input
           id={day}
@@ -55,7 +56,7 @@ export const ScheduleField: React.FC<ScheduleFieldProps> = ({ schedule, onChange
           value={notes}
           maxLength={90}
           className="mt-3 w-full"
-          placeholder={`Notes for ${capitalizedDay}...`}
+          placeholder={t("notesPlaceholder", [weekdayLabel])}
           onChange={(e) => onChange({ ...schedule, notes: e.target.value })}
         />
       )}

@@ -1,6 +1,7 @@
 import { Sparkles, X } from "lucide-react";
 import type { ChangelogEntry } from "@/types";
 import { Card } from "@/components/ui/card";
+import { t } from "@/lib";
 
 interface ChangelogProps {
   entry: ChangelogEntry | null;
@@ -15,7 +16,9 @@ export const Changelog = ({ entry, onDismiss }: ChangelogProps) => {
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-accent-foreground shrink-0" />
-          <span className="font-semibold text-foreground">What's new in v{entry.version}</span>
+          <span className="font-semibold text-foreground">
+            {t("changelogWhatsNew", [entry.version])}
+          </span>
         </div>
         <button
           type="button"
@@ -27,7 +30,7 @@ export const Changelog = ({ entry, onDismiss }: ChangelogProps) => {
       </div>
       <ul className="flex flex-col gap-1 pl-5 list-disc text-muted-foreground">
         {entry.items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>{t(item)}</li>
         ))}
       </ul>
     </Card>

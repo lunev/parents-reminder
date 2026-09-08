@@ -166,7 +166,7 @@ describe("checkSchedule", () => {
     expect(notificationsCreateMock).toHaveBeenCalled();
   });
 
-  it("uses a single-dot badge and omits the child's name from speech in anonymous mode", async () => {
+  it("uses a single-dot badge and speaks a translated phrase with no child name in anonymous mode", async () => {
     const child = buildChild();
     getMock
       .mockResolvedValueOnce({ children: [child] })
@@ -176,7 +176,10 @@ describe("checkSchedule", () => {
 
     expect(setBadgeTextMock).toHaveBeenCalledWith({ text: "." });
     expect(ttsSpeakMock).toHaveBeenCalledTimes(1);
-    expect(ttsSpeakMock).not.toHaveBeenCalledWith(expect.stringContaining(child.name), {});
+    expect(ttsSpeakMock).toHaveBeenCalledWith(
+      "It's reminder time",
+      expect.objectContaining({ lang: "en-US" }),
+    );
   });
 
   it("speaks the app name and child's name together in a single call", async () => {

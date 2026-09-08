@@ -4,6 +4,7 @@ import { useFloatingPopup } from "@/hooks";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib";
 
 export type FloatingPopupPosition = "bottom-right" | "bottom-left" | "top-right" | "top-left";
 
@@ -92,8 +93,8 @@ export const FloatingPopup = ({
         size="icon-sm"
         className="absolute top-1.5 right-1.5 rounded-full"
         onClick={dismiss}
-        title="Dismiss"
-        aria-label="Dismiss"
+        title={t("dismiss")}
+        aria-label={t("dismiss")}
       >
         <X className="size-3.5" />
       </Button>

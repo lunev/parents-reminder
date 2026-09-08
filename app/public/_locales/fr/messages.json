@@ -1,0 +1,67 @@
+{
+  "extName": { "message": "Parents Reminder – Rappels sortie d'école et emploi du temps" },
+  "extDescription": {
+    "message": "Ne manquez plus la sortie d'école. Rappels sur le bureau et par la voix pour l'emploi du temps de vos enfants."
+  },
+  "appName": { "message": "Parents Reminder" },
+  "homeEmptyTitle": { "message": "Aucun rappel pour l'instant" },
+  "homeEmptyDescription": {
+    "message": "Ajoutez votre premier enfant pour recevoir des rappels utiles de sortie d'école"
+  },
+  "addChild": { "message": "Ajouter un enfant" },
+  "childCardNotScheduled": { "message": "Non planifié" },
+  "childCardPaused": { "message": "En pause" },
+  "changelogWhatsNew": { "message": "Nouveautés de la v$1" },
+  "childAddTitle": { "message": "Ajouter un enfant" },
+  "childEditTitle": { "message": "Modifier l'enfant" },
+  "childNotFound": { "message": "Enfant introuvable" },
+  "goBack": { "message": "Retour" },
+  "confirmSure": { "message": "Sûr ?" },
+  "nameLabel": { "message": "Nom" },
+  "namePlaceholder": { "message": "Nom de l'enfant" },
+  "scheduleByDay": { "message": "Emploi du temps par jour" },
+  "earlyReminderLabel": { "message": "Rappel anticipé" },
+  "remindMeLabel": { "message": "Me rappeler" },
+  "minBefore": { "message": "min avant" },
+  "cancel": { "message": "Annuler" },
+  "save": { "message": "Enregistrer" },
+  "weekdayMonday": { "message": "Lundi" },
+  "weekdayTuesday": { "message": "Mardi" },
+  "weekdayWednesday": { "message": "Mercredi" },
+  "weekdayThursday": { "message": "Jeudi" },
+  "weekdayFriday": { "message": "Vendredi" },
+  "weekdaySaturday": { "message": "Samedi" },
+  "weekdaySunday": { "message": "Dimanche" },
+  "notesPlaceholder": { "message": "Notes pour $1..." },
+  "photoLabel": { "message": "Photo" },
+  "removePhoto": { "message": "Supprimer la photo" },
+  "photoLoadFailed": { "message": "Échec du chargement de la photo" },
+  "settingsTitle": { "message": "Paramètres" },
+  "feedback": { "message": "Commentaires" },
+  "notificationsSection": { "message": "Notifications" },
+  "voiceNotifTitle": { "message": "Notifications vocales" },
+  "voiceNotifDescription": {
+    "message": "Activez les notifications vocales pour annoncer les rappels à voix haute"
+  },
+  "systemNotifTitle": { "message": "Notifications système" },
+  "systemNotifDescription": {
+    "message": "Recevez des rappels visuellement améliorés dans la barre système"
+  },
+  "anonymousModeTitle": { "message": "Mode anonyme" },
+  "anonymousModeDescription": {
+    "message": "Masque les noms des enfants dans les notifications, les badges et les alertes vocales pour protéger la vie privée dans les lieux publics"
+  },
+  "notFoundTitle": { "message": "Page introuvable" },
+  "backHome": { "message": "Retour à l'accueil" },
+  "dismiss": { "message": "Fermer" },
+  "supportMsg1": { "message": "Une question ?" },
+  "supportMsg2": { "message": "Une suggestion pour nous ?" },
+  "supportMsg3": { "message": "Un problème ou un bug ?" },
+  "supportLinkText": { "message": "Obtenir de l'aide ici" },
+  "notificationMessage": { "message": "$1, $2" },
+  "ttsAnnouncement": { "message": "Rappel : $1" },
+  "ttsAnnouncementAnonymous": { "message": "C'est l'heure du rappel" },
+  "changelog340Localization": {
+    "message": "Ajout de la prise en charge de l'espagnol, du polonais, du français, de l'allemand et de l'ukrainien : l'application, les notifications et les rappels vocaux suivent désormais automatiquement la langue de votre navigateur."
+  }
+}
