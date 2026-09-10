@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Plus, Settings } from "lucide-react";
 import { ROUTES } from "@/config";
 import { t } from "@/lib";
-import logo from "@/assets/images/logo128x128.png";
+import logo from "@/assets/images/logo.svg";
 import { CurrentDateTime } from "./CurrentDateTime";
 
 export const HomeHeader: React.FC = () => {

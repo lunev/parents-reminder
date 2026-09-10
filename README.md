@@ -62,6 +62,9 @@ Google Chrome on Windows and Mac.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 3.4.1 - 2026-09-10
+- Internal changes only.
+
 ### 3.4.0 - 2026-09-08
 - Added Spanish, Polish, French, German, and Ukrainian support — the app, desktop notifications, and voice reminders now automatically follow your browser's language.
 
