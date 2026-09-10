@@ -17,7 +17,7 @@ export interface Schedule {
   status: ScheduleStatus;
 }
 
-export interface EarlyReminder {
+interface EarlyReminder {
   enabled: boolean;
   minutes: string;
 }

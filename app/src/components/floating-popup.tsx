@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { t } from "@/lib";
 
-export type FloatingPopupPosition = "bottom-right" | "bottom-left" | "top-right" | "top-left";
+type FloatingPopupPosition = "bottom-right" | "bottom-left" | "top-right" | "top-left";
 
 const POSITION_CLASSES: Record<FloatingPopupPosition, string> = {
   "bottom-right": "bottom-3 right-3",
