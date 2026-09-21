@@ -23,3 +23,14 @@ app/build
 *.njsproj
 *.sln
 *.sw?
+
+# --- Environment variables ---
+.env
+.env.*
+!.env.example
+
+# --- Test coverage ---
+coverage
+
+# --- Design source files (large; kept out of git) ---
+design/**/*.psd

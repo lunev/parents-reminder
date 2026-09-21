@@ -9,7 +9,7 @@ Chrome Extension (Manifest V3), "Parents Reminder" — school schedule alerts wi
 ## Repo layout
 
 - `app/` — the entire buildable project (package.json, src/, public/, vite/tsconfig/eslint/prettier config, scripts/). Run all npm commands from inside `app/`.
-- `design/` — Chrome Web Store promo assets (PNG/PSD), not part of the build.
+- `design/` — Chrome Web Store promo assets (PNG; PSD sources are gitignored, local only), not part of the build.
 - `chrome-webstore/` — `releases/` (packaged extension zips) plus `description.txt` and `testing-instructions.txt` starter drafts for the store listing. Store field limits: description ≤ 16,000 characters, testing instructions ≤ 500 characters, plain text only.
 - `site/` — public landing page: a static Vite + React SPA with its own `package.json` (run its npm commands from inside `site/`: `npm run dev`, `npm run build`). Copy lives in `site/src/content.ts`; keep it in sync by hand with `chrome-webstore/description.txt`. `.github/workflows/pages.yml` deploys it to https://lunev.github.io/parents-reminder/ on pushes to `main` that touch `site/`. Needs a public repo with Settings → Pages → Source set to "GitHub Actions", and `base` in `site/vite.config.ts` must equal the repo name.
 
