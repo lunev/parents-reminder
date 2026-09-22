@@ -23,3 +23,5 @@ PRIVACY FIRST
 Parents Reminder never sends your data anywhere. Your children's names, schedules, and settings are stored only in your browser's local storage — not on a server, not in the cloud, and never shared with third parties.
 
 Add your first child and set your first reminder in under a minute.
+
+Open source on GitHub: github.com/lunev/parents-reminder
