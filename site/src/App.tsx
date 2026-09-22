@@ -32,7 +32,7 @@ export default function App() {
             className="flex items-center gap-3 font-serif text-lg font-semibold tracking-tight"
           >
             <img
-              src={`${base}logo.png`}
+              src={`${base}logo.svg`}
               alt=""
               width={28}
               height={28}
