@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://lunev.github.io/parents-reminder/">Website</a> · <a href="https://chromewebstore.google.com/detail/honpenmjodkgcmmmiangohmegkobhmkh">Chrome Web Store</a>
+  <a href="https://chromewebstore.google.com/detail/honpenmjodkgcmmmiangohmegkobhmkh">Chrome Web Store</a>
 </p>
 
 ## Features
